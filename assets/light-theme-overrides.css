@@ -1,0 +1,578 @@
+/* ============================================================
+   GROWXCEL — LIGHT THEME OVERRIDE
+   Loaded AFTER styles.css. Keeps every font, component, and
+   layout rule from the original build untouched — only flips
+   the dark sections to light and applies official brand colors
+   (Navy #001C43 / Yellow #FFD600) from the brand book.
+   ============================================================ */
+
+:root{
+  /* Official brand colors replace the placeholder blue */
+  --brand:      #001C43;
+  --brand-mid:  #004071;
+  --accent:     #005E96;
+  --yellow:     #FFD600;
+
+  /* Light-context border/glow tokens (header/footer stay dark, untouched) */
+  --accent-bright: #005E96;
+  --accent-glow:   rgba(0,94,150,0.10);
+  --accent-border: rgba(0,94,150,0.28);
+}
+
+/* ── Logo watermarks: screen blend (white-on-dark) → multiply (dark-on-light) ── */
+#hlb-ring-hero, #hlb-ring-1{
+  mix-blend-mode: multiply;
+  filter: invert(1) sepia(0.4) hue-rotate(195deg) saturate(0.6);
+}
+
+/* ── Header / Footer: keep dark, but official navy instead of near-black ── */
+.site-header{ background: rgba(0,28,67,0.94); }
+footer{ background: var(--brand); }
+.brand img{ background: transparent; }
+
+/* Status bar under header — was near-black translucent, now navy-tinted on light hero */
+.hero-command-bar{ background: rgba(0,28,67,0.05); border-bottom-color: rgba(0,28,67,0.08); }
+.hcb-inner{ color: rgba(0,28,67,0.55); }
+
+/* ============================================================
+   Flip dark sections to light by re-scoping the dark-surface
+   custom properties. Everything nested under these selectors
+   that uses var(--black)/var(--white)/var(--dark-2) etc. will
+   automatically pick up the new light values.
+   ============================================================ */
+.hero,
+.system-intro,
+.impact-lab,
+.contact{
+  --black: #F5F8FC;
+  --dark:  #F5F8FC;
+  --dark-2:#FFFFFF;
+  --dark-3:#FFFFFF;
+  --white: #001C43;
+  --border-dark: rgba(0,28,67,0.10);
+  --border-dim:  rgba(0,28,67,0.05);
+  --text-muted: #5B6B8C;
+}
+
+/* Re-establish the dark "device mockup" panel inside the hero —
+   reads as an intentional dark UI-preview accent on the light page */
+.hero-product, .product-shell{
+  --black: #001C43;
+  --dark:  #001C43;
+  --dark-2:#002E5E;
+  --dark-3:#002E5E;
+  --white: #FFFFFF;
+  --border-dark: rgba(255,255,255,0.09);
+  --border-dim:  rgba(255,255,255,0.05);
+  --text-muted: rgba(255,255,255,0.4);
+}
+/* ── Hero: literal (non-variable) colors ── */
+.hero::before{ background-image: radial-gradient(circle, rgba(0,28,67,0.10) 1px, transparent 1px); }
+.hero::after{
+  background: radial-gradient(ellipse at 50% 45%,
+    rgba(0,94,150,0.16) 0%,
+    rgba(0,94,150,0.08) 30%,
+    rgba(0,94,150,0.03) 55%,
+    transparent 75%);
+}
+.hero-bottom-blend{ background: linear-gradient(to bottom, transparent 0%, #F5F8FC 100%); }
+.hero-title{ color: var(--brand); }
+.hero-word.accent{ color: var(--accent); }
+.hero-text{ color: rgba(0,28,67,0.68); }
+.hero-trust-row{ color: rgba(0,28,67,0.55); }
+
+/* ── System intro ── */
+.system-intro::before{
+  background-image:
+    linear-gradient(rgba(0,28,67,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,28,67,0.05) 1px, transparent 1px);
+}
+.system-index{ color: rgba(0,28,67,0.22); }
+.system-index span{ border-bottom-color: rgba(0,28,67,0.12); }
+.system-statement p{ color: rgba(0,28,67,0.6); }
+.system-statement h2{ color: var(--brand); }
+.system-points li{ color: rgba(0,28,67,0.68); border-bottom-color: rgba(0,28,67,0.10); }
+
+/* ── Impact lab ── */
+.impact-lab{ background: #F0F4FA; }
+.impact-lab .section-copy h2{ color: var(--brand); }
+.impact-lab .section-copy p{ color: rgba(0,28,67,0.62); }
+.impact-card h3{ color: var(--brand); }
+.impact-card p{ color: rgba(0,28,67,0.6); }
+.impact-top{ color: rgba(0,28,67,0.45); }
+.impact-grid{ background: rgba(0,28,67,0.08); }
+.dial{ background: conic-gradient(var(--accent) 0 var(--angle), rgba(0,28,67,0.10) var(--angle) 360deg); }
+.dial span{ color: var(--brand); }
+.node-map, .decision-stack{
+  background:
+    linear-gradient(rgba(0,28,67,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,28,67,0.06) 1px, transparent 1px),
+    rgba(0,28,67,0.02);
+}
+.decision-stack i{ background: rgba(255,255,255,0.96); box-shadow: 0 1px 4px rgba(0,28,67,0.12); }
+.ba-panel{ box-shadow: 0 1px 3px rgba(0,28,67,0.08); }
+
+/* ── Before/After panels (ba-panel-new) ── */
+.ba-panel-new { background: #fff; box-shadow: 0 1px 4px rgba(0,28,67,0.08); }
+.ba-panel-new strong { color: #001C43; }
+.ba-panel-new small  { color: rgba(0,28,67,0.55); }
+.ba-panel-new .leak-chart,
+.ba-panel-new .gain-chart { background: rgba(0,28,67,0.04); border-color: rgba(0,28,67,0.08); }
+.ba-center-arrow { background: #fff; color: var(--accent); }
+
+/* ── Impact metric cards (imr-card) ── */
+.imr-card { background: #fff; border-color: rgba(0,28,67,0.10); }
+.imr-card h3 { color: #001C43; }
+.imr-card p  { color: rgba(0,28,67,0.55); }
+.imr-stat-block { border-color: rgba(0,28,67,0.10); }
+.imr-sublabel { color: rgba(0,28,67,0.45); }
+.impact-metrics-row { border-color: rgba(0,28,67,0.10); }
+.impact-ba-row { border-color: rgba(0,28,67,0.10); background: #fff; }
+
+/* ERP card internals */
+.imrv-box { background: rgba(0,28,67,0.05); border-color: rgba(0,28,67,0.12); color: rgba(0,28,67,0.55); }
+.imrv-note { color: rgba(0,28,67,0.35); }
+.imr-erp-vis { border-color: rgba(0,28,67,0.10); }
+
+/* Report card internals */
+.imr-report-vis { border-color: rgba(0,28,67,0.10); }
+.imrr-row { border-color: rgba(0,28,67,0.08); }
+.imrr-label { color: rgba(0,28,67,0.5); }
+.imrr-divider { background: rgba(0,28,67,0.08); }
+.imrr-row.warn { background: rgba(239,68,68,0.04); }
+.imrr-action { background: rgba(0,65,113,0.05); }
+.imrr-badge { background: #004071; color: #fff; }
+
+/* ── Clients: orbit section stays dark ── */
+.clients{
+  background: #04111F;
+}
+
+/* ── Contact ── */
+.contact{ background: #F5F8FC; }
+.contact-left h2{ color: var(--brand); }
+.contact-left p{ color: rgba(0,28,67,0.6); }
+.contact-info-row a{ color: rgba(0,28,67,0.78); }
+.contact-info-row span:last-child{ color: rgba(0,28,67,0.55); }
+.contact-detail span:last-child{ color: rgba(0,28,67,0.62); }
+
+/* ── Contact form — literal rgba(255,255,255,...) overrides ── */
+.cf-field label{ color: rgba(0,28,67,0.55); }
+.cf-field input,
+.cf-field select,
+.cf-field textarea{
+  background: #ffffff;
+  border-color: rgba(0,28,67,0.14);
+  color: #001C43;
+}
+.cf-field input::placeholder,
+.cf-field textarea::placeholder{ color: rgba(0,28,67,0.32); }
+.cf-field select{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(0%2C28%2C67%2C0.45)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-color: #ffffff;
+}
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus{ border-color: var(--accent); background: rgba(0,94,150,0.04); }
+.cf-submit{ background: var(--brand); color: #ffffff !important; }
+.cf-submit:hover{ background: var(--brand-mid); }
+
+/* ── Progressive form light-theme overrides ── */
+.pf-counter{ color: rgba(0,28,67,0.38); }
+.pf-progress{ background: rgba(0,28,67,0.10); }
+.pf-hint{ color: rgba(0,28,67,0.45); }
+
+.pf-chip{
+  color: rgba(0,28,67,0.65);
+  border-color: rgba(0,28,67,0.14);
+}
+.pf-chip:hover{
+  border-color: rgba(0,94,150,0.55);
+  color: #001C43;
+}
+.pf-chip.selected{
+  border-color: var(--accent);
+  background: rgba(0,94,150,0.10);
+  color: #001C43;
+}
+
+.pf-back{ color: rgba(0,28,67,0.35); }
+.pf-back:hover{ color: rgba(0,28,67,0.65); }
+.pf-next{ background: var(--brand); color: #ffffff !important; }
+.pf-next:hover:not(:disabled){ background: var(--brand-mid); }
+
+/* Success screen — literal white values need light overrides */
+.cf-success h3{ color: #001C43; }
+.cf-success p{ color: rgba(0,28,67,0.55); }
+.cf-success-icon{ background: rgba(62,207,108,0.10); }
+
+/* Client sector tag grid (used on Saudi Arabia page) */
+.client-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+.client-card{
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0,28,67,0.12);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #001C43;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 4px rgba(0,28,67,0.06);
+  transition: background 160ms, border-color 160ms, box-shadow 160ms;
+}
+.client-card:hover{
+  background: #f0f6ff;
+  border-color: rgba(0,94,150,0.30);
+  box-shadow: 0 2px 8px rgba(0,28,67,0.10);
+}
+.clients{ padding-bottom: 80px; }
+@media(max-width:680px){ .client-grid{ grid-template-columns: 1fr 1fr; } }
+
+/* ── Case Study Carousel (Success Stories) ── */
+.cs-section{ background: #F5F8FC; padding: clamp(72px,8vw,120px) clamp(20px,5vw,80px); }
+.cs-section-header{ margin-bottom: 48px; }
+.cs-section-header h2{ font-size: clamp(2rem,4vw,3.2rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.08; color: #001C43; margin-top: 10px; }
+
+.cs-carousel-wrap{ display: flex; flex-direction: column; gap: 0; }
+.cs-carousel{ overflow: visible; position: relative; }
+.cs-track-clip{ overflow: hidden; border-radius: 16px; }
+.cs-track{ display: flex; transition: transform 480ms cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+
+.cs-slide{ min-width: 100%; background: linear-gradient(135deg, #001C43 0%, #003869 100%); position: relative; overflow: hidden; display: flex; align-items: stretch; border-radius: 16px; }
+.cs-slide::before{ content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse at 70% 30%, rgba(255,214,0,0.05) 0%, transparent 55%); pointer-events: none; }
+
+.cs-slide-inner{ flex: 1 1 0%; min-width: 0; padding: clamp(44px,5vw,72px) clamp(40px,5vw,72px); position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0; }
+
+/* Right image panel */
+.cs-slide-image{ flex: 0 0 38%; position: relative; overflow: hidden; }
+.cs-slide-image img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+/* Placeholder shown when image hasn't loaded / file missing */
+.cs-slide-image::before{
+  content: attr(data-industry);
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.25);
+  border-left: 1px solid rgba(255,255,255,0.07);
+}
+/* Hide placeholder once image loads */
+.cs-slide-image img[src]:not([src=""]) + *{ display: none; }
+/* Gradient fade on left edge of image into slide background */
+.cs-slide-image::after{
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to right, #001C43 0%, transparent 30%);
+  pointer-events: none;
+}
+
+@media(max-width:820px){
+  .cs-slide{ flex-direction: column; position: relative; }
+  .cs-slide-image{
+    display: block;
+    position: absolute;
+    inset: 0;
+    flex: none;
+    height: 100%;
+    opacity: 0.18;
+    z-index: 0;
+  }
+  .cs-slide-image img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .cs-slide-inner{ padding: 32px 28px; gap: 0; position: relative; z-index: 1; }
+  .cs-slide-top{ margin-bottom: 12px; }
+  .cs-slide-metric-num{ font-size: 2.8rem; margin-bottom: 10px; }
+  .cs-slide-inner h3{ font-size: 1.05rem; margin-bottom: 10px; }
+  .cs-slide-inner p{ font-size: 0.84rem; line-height: 1.65; }
+  .cs-tags-row{ margin-top: 14px; gap: 6px; }
+}
+
+.cs-slide-top{ display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.cs-slide-counter{ font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); text-transform: uppercase; margin-left: auto; }
+
+.cs-tag{ display: inline-block; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #FFD600; padding: 4px 10px; background: rgba(255,214,0,0.12); border-radius: 4px; }
+
+.cs-slide-metric-num{ font-size: clamp(3.5rem,8vw,7rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: #FFD600; font-family: 'Bricolage Grotesque', sans-serif; margin-bottom: 20px; }
+
+.cs-slide-inner h3{ font-size: clamp(1.1rem,2vw,1.5rem); font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; color: #ffffff; margin: 0 0 14px; }
+.cs-slide-inner p{ font-size: clamp(0.82rem,1vw,0.88rem); color: rgba(255,255,255,0.55); line-height: 1.8; margin: 0; }
+
+.cs-tags-row{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.cs-tags-row span{ font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); padding: 4px 10px; border: 1px solid rgba(255,255,255,0.14); border-radius: 4px; }
+
+/* Navigation */
+/* Side arrow buttons — float on left/right of the carousel, vertically centered */
+.cs-side-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+#csPrev.cs-side-btn { left: -22px; }
+#csNext.cs-side-btn { right: -22px; }
+
+.cs-carousel-nav{ display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px 0 0; }
+.cs-carousel-btn{ width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(0,28,67,0.18); background: #ffffff; color: #001C43; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 160ms, border-color 160ms, transform 160ms; flex-shrink: 0; }
+.cs-carousel-btn:hover{ background: #001C43; border-color: #001C43; color: #ffffff; }
+.cs-carousel-btn:active{ transform: scale(0.94); }
+.cs-carousel-btn:disabled{ opacity: 0.35; cursor: default; }
+.cs-carousel-dots{ display: flex; align-items: center; gap: 5px; }
+.cs-dot{ width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(0,28,67,0.18); cursor: pointer; padding: 0; transition: background 200ms, width 200ms; }
+.cs-dot.active{ background: #001C43; width: 18px; border-radius: 3px; }
+
+/* CTA strip */
+.cs-carousel-cta{ margin-top: 32px; padding: clamp(28px,3vw,40px) clamp(28px,4vw,48px); background: #001C43; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.cs-carousel-cta .eyebrow{ color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+.cs-carousel-cta h3{ font-size: clamp(1rem,2vw,1.35rem); font-weight: 800; color: #ffffff; margin: 0; letter-spacing: -0.01em; }
+.cs-cta-link{ display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #FFD600; text-decoration: none; white-space: nowrap; transition: gap 160ms; flex-shrink: 0; }
+.cs-cta-link:hover{ gap: 14px; }
+
+@media(max-width:600px){ .cs-carousel-cta{ flex-direction: column; align-items: flex-start; } }
+
+/* ── Service visual widget alignment fix ── */
+/* All widget boxes are 90px tall. Widgets with sparse content (pipeline, cascade)
+   used justify-content:center which made content float to the middle, looking "low".
+   Force all to flex-start so content always anchors at the top of each box. */
+.sv-waterfall,
+.sv-pipeline,
+.sv-compare,
+.sv-cascade{ justify-content: flex-start !important; padding-top: 14px !important; }
+.sv-pipeline{ padding-top: 18px !important; }
+.sv-erp-flow{ align-items: flex-start; padding-top: 16px !important; }
+.sv-datarows .dr-row{ flex: none; }
+
+/* ── Success Stories stats strip ── */
+.ss-stats-section{
+  background: #001C43;
+  padding: clamp(72px,8vw,120px) clamp(20px,5vw,80px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px,5vw,80px);
+  align-items: center;
+}
+.ss-stats-header h2{
+  font-size: clamp(1.8rem,3.5vw,3rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.ss-stats-header .eyebrow{ color: rgba(255,255,255,0.45); }
+.ss-stats-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ss-stat{
+  padding: clamp(24px,3vw,40px) clamp(20px,2.5vw,36px);
+  border-right: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.ss-stat:nth-child(2n){ border-right: none; }
+.ss-stat:nth-child(3),
+.ss-stat:nth-child(4){ border-bottom: none; }
+.ss-stat .stat-num{
+  display: block;
+  font-size: clamp(2.2rem,4vw,3.8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #FFD600;
+  margin-bottom: 10px;
+}
+.ss-stat p{
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 4px;
+}
+.ss-stat span{
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.40);
+  letter-spacing: 0.04em;
+}
+@media(max-width:780px){
+  .ss-stats-section{ grid-template-columns: 1fr; }
+  .ss-stats-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:480px){
+  .ss-stats-grid{ grid-template-columns: 1fr; }
+  .ss-stat{ border-right: none; }
+  .ss-stat:nth-child(3){ border-bottom: 1px solid rgba(255,255,255,0.10); }
+}
+
+/* ── Interior page header (replaces full home hero on sub-pages) ── */
+.page-header{
+  padding: 140px clamp(20px,4vw,80px) 72px;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.page-header,
+.page-header.section-reveal{
+  --black: #F5F8FC;
+  --dark:  #F5F8FC;
+  --dark-2:#FFFFFF;
+  --dark-3:#FFFFFF;
+  --white: #001C43;
+  --border-dark: rgba(0,28,67,0.10);
+  --border-dim:  rgba(0,28,67,0.05);
+  --text-muted: #5B6B8C;
+}
+.page-header h1{
+  font-size: clamp(42px,6.5vw,90px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--brand);
+  margin-bottom: 22px;
+}
+.page-header .hero-text{
+  font-size: clamp(15px,1.3vw,18px);
+  color: rgba(0,28,67,0.62);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* ── Multi-page nav enhancements ── */
+.header-right{
+  display:flex;align-items:center;gap:12px;flex-shrink:0;
+}
+.lang-toggle{
+  display:inline-flex;align-items:center;height:36px;padding:0 14px;
+  border-radius:4px;font-size:0.7rem;font-weight:800;letter-spacing:0.13em;
+  text-transform:uppercase;color:rgba(255,255,255,0.75);
+  border:1px solid rgba(255,255,255,0.25);
+  transition:color 160ms,border-color 160ms;
+}
+.lang-toggle:hover{color:#fff;border-color:rgba(255,255,255,0.5);}
+nav a.active{color:#fff;}
+nav a.active::after{transform:scaleX(1)!important;}
+
+/* ── Extend nav visibility to cover 6-item nav ── */
+@media (min-width: 821px) and (max-width: 1100px){
+  nav{ gap:18px; }
+  nav a{ font-size:0.62rem; letter-spacing:0.1em; }
+  .header-right{ gap:8px; }
+  .header-cta{ padding:0 14px; font-size:0.65rem; }
+}
+/* ≤820px: hamburger mode — hide desktop nav items */
+@media (max-width: 820px){
+  .lang-toggle{ display:none!important; }
+  .header-cta{ display:none!important; }
+}
+
+/* ── Buttons: yellow as the primary action accent ── */
+.button.primary{
+  background: var(--yellow);
+  color: var(--brand);
+}
+.button.primary:hover{ background: #E6C100; }
+
+/* ── Stat numbers / proof pills keep brand navy for emphasis ── */
+.stat-num{ color: var(--brand); }
+.stat-item p{ color: rgba(0,28,67,0.58); }
+.proof-pill strong{ color: var(--brand); }
+
+/* ── Comparison section: light decision-proof surface ── */
+.compare-section{
+  --white: #001C43;
+  --black: #F5F8FC;
+  --dark-2: #FFFFFF;
+  --border-dark: rgba(0,28,67,0.12);
+  --border-dim: rgba(0,28,67,0.07);
+  background: #F5F8FC;
+  color: #001C43;
+  border-top: 1px solid rgba(0,28,67,0.08);
+}
+.compare-section::before{
+  background-image:
+    linear-gradient(rgba(0,94,150,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,94,150,0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+.compare-header{ max-width: 820px; }
+.compare-header h2{
+  color: #001C43;
+  font-size: clamp(2.25rem, 4.8vw, 4.8rem);
+  line-height: 1.04;
+}
+.compare-header p{
+  max-width: 680px;
+  color: rgba(0,28,67,0.62);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+}
+.compare-table-wrap{
+  border: 1px solid rgba(0,28,67,0.12);
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: 0 18px 48px rgba(0,28,67,0.07);
+}
+.compare-table thead tr{
+  background: #EAF2FA;
+  border-bottom-color: rgba(0,28,67,0.12);
+}
+.compare-table th{
+  color: rgba(0,28,67,0.52);
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+.compare-table th.ct-feature-col{ color: #001C43; }
+.compare-table .ct-growxcel{
+  background: #EDF6FF;
+  border-left-color: rgba(0,94,150,0.24);
+  border-right: 0;
+}
+.compare-table th.ct-growxcel{
+  background: #DDEEFF;
+  color: #005E96;
+}
+.ct-badge{ color: #005E96; }
+.compare-table tbody tr{ border-bottom-color: rgba(0,28,67,0.08); }
+.compare-table tbody tr:hover{ background: #F8FBFF; }
+.compare-table td{ color: rgba(0,28,67,0.6); }
+.compare-table td:first-child{ color: #001C43; font-weight: 650; }
+.ct-partial{ color: rgba(0,28,67,0.52); font-style: normal; }
+.compare-table th:nth-child(n+2),
+.compare-table td:nth-child(n+2){ border-left: 1px solid rgba(0,28,67,0.12); }
+.compare-table th:nth-child(2),
+.compare-table td:nth-child(2){ border-left-color: rgba(0,94,150,0.28); }
+.ct-yes{ margin-inline: auto; background: rgba(22,163,74,0.10); color: #16813D; }
+.ct-yes svg{ color: #16813D; }
+.ct-no{ margin-inline: auto; background: rgba(220,38,38,0.08); color: #C83B3B; }
+.ct-no svg{ color: #C83B3B; }
+.compare-cta p{ color: rgba(0,28,67,0.56); }
+
+@media (max-width: 760px){
+  .compare-section::before{ display: none; }
+  .compare-table tbody tr,
+  .compare-table tbody tr:hover{
+    background: #FFFFFF;
+    border-color: rgba(0,28,67,0.12);
+    border-radius: 8px;
+  }
+  .compare-table tbody td:first-child{
+    color: #001C43;
+    border-bottom-color: rgba(0,28,67,0.10);
+  }
+  .compare-table tbody td:nth-child(2){
+    background: #EDF6FF;
+    border-left: 0;
+    border-right: 1px solid rgba(0,28,67,0.10);
+  }
+  .compare-table tbody td:nth-child(3){ border-left: 0; border-right: 1px solid rgba(0,28,67,0.10); }
+  .compare-table tbody td:nth-child(4){ border-left: 0; }
+  .compare-table tbody td:nth-child(3)::before,
+  .compare-table tbody td:nth-child(4)::before{ color: rgba(0,28,67,0.4); }
+}

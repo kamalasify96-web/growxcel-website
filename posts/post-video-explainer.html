@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Growxcel · Video Explainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080808;
+      --navy:    #082f73;
+      --accent:  #4a7fd4;
+      --bright:  #7ab0f5;
+      --red:     #ef4444;
+      --green:   #22c55e;
+      --white:   #ffffff;
+      --font-head:  'Space Grotesk', sans-serif;
+      --font-body:  'IBM Plex Sans', sans-serif;
+      --font-brand: 'Bricolage Grotesque', sans-serif;
+      --font-ar-head: 'Cairo', sans-serif;
+      --font-ar-body: 'IBM Plex Arabic', 'Cairo', sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .frame {
+      width: 1080px;
+      height: 1920px;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── BACKGROUND LAYERS ── */
+    /* deep navy radial behind center */
+    .bg-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 1000px 800px at 50% 55%, rgba(8,47,115,0.6) 0%, transparent 65%),
+        radial-gradient(ellipse 600px 400px at 15% 10%, rgba(74,127,212,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at 85% 90%, rgba(74,127,212,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* blueprint grid */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(74,127,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,127,212,0.03) 1px, transparent 1px);
+      background-size: 90px 90px;
+      pointer-events: none;
+    }
+
+    /* vignette */
+    .vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0,0,0,0.75) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* left accent stripe */
+    .stripe {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(to bottom,
+        transparent, var(--accent) 25%, var(--bright) 50%, var(--accent) 75%, transparent);
+      z-index: 2;
+    }
+
+    /* all content above bg */
+    .content { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; padding: 80px 72px; }
+
+    /* ── TOP: LOGO ── */
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+    .logo-lock { display:flex; align-items:center; gap:16px; }
+    .logo-mark {
+      width: 88px; height: 88px; object-fit: contain;
+      filter: contrast(20) brightness(1.1); mix-blend-mode: screen;
+    }
+    .logo-name {
+      font-family: var(--font-head); font-weight: 700; font-size: 24px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--white);
+    }
+    .post-badge {
+      font-family: var(--font-body); font-size: 13px; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(74,127,212,.3); padding: 8px 18px; border-radius: 24px;
+    }
+
+    /* ── SECTION 1: THE PROBLEM ── */
+    .section-problem {
+      margin-top: 88px;
+    }
+
+    .section-label {
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-label::before {
+      content: ''; width: 32px; height: 1px; background: currentColor; flex-shrink: 0;
+    }
+    .section-label.red { color: var(--red); }
+    .section-label.green { color: var(--green); }
+    .section-label.blue { color: var(--accent); }
+
+    .problem-headline {
+      font-family: var(--font-brand); font-weight: 800;
+      font-size: 80px; line-height: 1.05; letter-spacing: -.025em;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+    .problem-headline em { font-style: normal; color: var(--red); }
+
+    /* cost meter bar */
+    .meter-wrap {
+      margin-bottom: 12px;
+    }
+    .meter-label-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .meter-key {
+      font-family: var(--font-body); font-size: 14px; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.45);
+    }
+    .meter-val {
+      font-family: var(--font-head); font-weight: 700; font-size: 28px;
+      color: var(--red);
+    }
+    .meter-track {
+      width: 100%; height: 10px; background: rgba(255,255,255,.07); border-radius: 6px; overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%; border-radius: 6px;
+      background: linear-gradient(to right, #ef4444, #f87171);
+    }
+    .meter-fill.red-42  { width: 42%; }
+    .meter-fill.amber-8 { width: 8%; background: linear-gradient(to right, #f59e0b, #fbbf24); }
+
+    .meter-sublabel {
+      font-family: var(--font-body); font-size: 15px; color: rgba(255,255,255,.35);
+      margin-top: 10px;
+    }
+
+    /* ── DIVIDER ARROW ── */
+    .process-arrow {
+      display: flex; align-items: center; justify-content: center;
+      margin: 48px 0;
+      gap: 0;
+    }
+    .arrow-line {
+      flex: 1; height: 2px;
+      background: linear-gradient(to right, transparent, rgba(74,127,212,.5), transparent);
+    }
+    .arrow-center {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 0 32px;
+    }
+    .arrow-icon {
+      width: 52px; height: 52px; border: 1px solid rgba(74,127,212,.4); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: var(--accent);
+    }
+    .arrow-text {
+      font-family: var(--font-body); font-size: 12px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+      text-align: center;
+    }
+
+    /* ── SECTION 2: HOW ── */
+    .section-how {}
+
+    .how-headline {
+      font-family: var(--font-brand); font-weight: 800;
+      font-size: 80px; line-height: 1.05; letter-spacing: -.025em;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .how-headline em { font-style: normal; color: var(--bright); }
+
+    /* 3-step process */
+    .steps {
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid rgba(255,255,255,.07); border-radius: 8px; overflow: hidden;
+      margin-bottom: 0;
+    }
+    .step {
+      display: flex; align-items: center; gap: 28px;
+      padding: 28px 36px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--font-head); font-weight: 700; font-size: 13px;
+      color: var(--accent); letter-spacing: .1em; flex-shrink: 0; width: 28px;
+    }
+    .step-bar {
+      width: 3px; height: 40px; border-radius: 2px; flex-shrink: 0;
+    }
+    .step:nth-child(1) .step-bar { background: var(--accent); }
+    .step:nth-child(2) .step-bar { background: var(--bright); }
+    .step:nth-child(3) .step-bar { background: var(--green); }
+    .step-text {}
+    .step-title {
+      font-family: var(--font-head); font-weight: 600; font-size: 22px;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .step-desc {
+      font-family: var(--font-body); font-size: 16px;
+      color: rgba(255,255,255,.4); line-height: 1.5;
+    }
+
+    /* ── SECTION 3: RESULT ── */
+    .section-result {
+      margin-top: 48px;
+    }
+
+    .result-row {
+      display: flex; align-items: baseline; gap: 20px;
+    }
+    .result-before {
+      font-family: var(--font-head); font-weight: 700; font-size: 72px;
+      letter-spacing: -.03em; color: rgba(239,68,68,.5);
+      text-decoration: line-through; text-decoration-color: rgba(239,68,68,.6);
+    }
+    .result-arrow-txt {
+      font-family: var(--font-head); font-size: 36px; color: rgba(255,255,255,.25);
+    }
+    .result-after {
+      font-family: var(--font-head); font-weight: 700; font-size: 96px;
+      letter-spacing: -.035em; color: var(--green);
+    }
+    .result-unit {
+      font-family: var(--font-body); font-size: 18px; color: rgba(255,255,255,.4);
+      line-height: 1.5;
+    }
+
+    .result-context {
+      font-family: var(--font-body); font-size: 22px;
+      color: rgba(255,255,255,.45); line-height: 1.55;
+      margin-top: 16px;
+    }
+    .result-context strong { color: rgba(255,255,255,.75); font-weight: 500; }
+
+    /* ── BOTTOM: CTA ── */
+    .bottom-bar {
+      margin-top: auto;
+      padding-top: 48px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .dr-name {
+      font-family: var(--font-head); font-weight: 700; font-size: 22px;
+      color: var(--white); margin-bottom: 5px;
+    }
+    .dr-sub {
+      font-family: var(--font-body); font-size: 16px;
+      color: rgba(255,255,255,.4); line-height: 1.6;
+    }
+    .dr-sub span { color: var(--accent); }
+    .cta {
+      text-align: right;
+    }
+    .cta-eyebrow {
+      font-family: var(--font-body); font-size: 12px; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.28);
+      display: block; margin-bottom: 5px;
+    }
+    .cta-main {
+      font-family: var(--font-body); font-size: 22px;
+      color: var(--accent); font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="bg-glow"></div>
+    <div class="bg-grid"></div>
+    <div class="vignette"></div>
+    <div class="stripe"></div>
+
+    <div class="content">
+
+      <!-- LOGO -->
+      <div class="logo-bar">
+        <div class="logo-lock">
+          <img src="../assets/growxcel-logo-white.png" class="logo-mark" alt="Growxcel" />
+          <span class="logo-name">Growxcel</span>
+        </div>
+        <span class="post-badge">How It Works</span>
+      </div>
+
+      <!-- SECTION 1: THE PROBLEM -->
+      <div class="section-problem">
+        <div class="section-label red">The Problem</div>
+        <h2 class="problem-headline">Your revenue looks fine.<br><em>Your costs are bleeding you.</em></h2>
+
+        <div class="meter-wrap">
+          <div class="meter-label-row">
+            <span class="meter-key">Avg. F&amp;B cost ratio</span>
+            <span class="meter-val">42%</span>
+          </div>
+          <div class="meter-track"><div class="meter-fill red-42"></div></div>
+          <div class="meter-sublabel">of revenue going to costs — most of it invisible</div>
+        </div>
+      </div>
+
+      <!-- PROCESS ARROW -->
+      <div class="process-arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-center">
+          <div class="arrow-icon">↓</div>
+          <div class="arrow-text">Growxcel fixes this</div>
+        </div>
+        <div class="arrow-line"></div>
+      </div>
+
+      <!-- SECTION 2: HOW -->
+      <div class="section-how">
+        <div class="section-label blue">How We Do It</div>
+        <h2 class="how-headline">Fix the system.<br><em>Not the symptom.</em></h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-bar"></div>
+            <div class="step-text">
+              <div class="step-title">Audit your real cost structure</div>
+              <div class="step-desc">Map every cost — labour, ingredients, waste, pricing gaps</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-bar"></div>
+            <div class="step-text">
+              <div class="step-title">Rebuild the tracking system</div>
+              <div class="step-desc">Install the data infrastructure that makes costs visible</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-bar"></div>
+            <div class="step-text">
+              <div class="step-title">Recover the margin</div>
+              <div class="step-desc">No staff cuts. No menu changes. System fixed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: RESULT -->
+      <div class="section-result">
+        <div class="section-label green">Real Result · Saudi Arabia</div>
+        <div class="result-row">
+          <span class="result-before">42%</span>
+          <span class="result-arrow-txt">→</span>
+          <span class="result-after">31%</span>
+          <div class="result-unit">of revenue<br>going to costs</div>
+        </div>
+        <p class="result-context">
+          Saudi restaurant group. <strong>11 percentage points recovered</strong><br>
+          in 6 months. Zero disruption to operations.
+        </p>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="bottom-bar">
+        <div>
+          <div class="dr-name">Dr. Rabab Mostafa</div>
+          <div class="dr-sub">CEO · Growxcel · <span>30+ Years</span><br>Egypt · Saudi Arabia · UAE</div>
+        </div>
+        <div class="cta">
+          <span class="cta-eyebrow">Ready to fix yours?</span>
+          <span class="cta-main">Book a free audit →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growxcel — Brand Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Bricolage+Grotesque:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:        #082f73;
+      --brand-mid:    #1a4fa0;
+      --accent:       #4a7fd4;
+      --accent-bright:#7ab0f5;
+      --black:        #080808;
+      --dark:         #0e0e0e;
+      --dark-2:       #141414;
+      --dark-3:       #1c1c1c;
+      --white:        #ffffff;
+      --off-white:    #f3f2ef;
+      --light:        #e8e8e3;
+      --text-dark:    #111111;
+      --text-muted:   #888888;
+      --danger:       #ef4444;
+      --success:      #22c55e;
+      --font-display: "Bricolage Grotesque", sans-serif;
+      --font-heading: "Space Grotesk", sans-serif;
+      --font-body:    "IBM Plex Sans", sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--text-dark);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(40px, 6vw, 80px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(74,127,212,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cover-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cover-logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-logo-mark img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      filter: contrast(20) brightness(1.1);
+      mix-blend-mode: screen;
+    }
+
+    /* Real logo image */
+    .logo-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* On white / off-white: multiply blends away the white JPG background */
+    .logo-img.on-light-filter {
+      filter: none;
+      mix-blend-mode: multiply;
+    }
+
+    /* On dark backgrounds: high contrast snaps dark-grey residue to black,
+       then screen blend makes black pixels fully transparent */
+    .logo-img.on-dark-filter {
+      filter: contrast(20) brightness(1.1);
+      mix-blend-mode: screen;
+    }
+
+    .cover-brand-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .cover-badge {
+      margin-left: auto;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+
+    .cover-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .cover-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .cover-title span { color: var(--accent); }
+
+    .cover-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.52);
+      max-width: 480px;
+      line-height: 1.75;
+    }
+
+    .cover-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .cover-footer-left p {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+    }
+
+    .cover-footer-right {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.12);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
+    }
+
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: rgba(0,0,0,0.09);
+      margin: 80px 0;
+    }
+
+    /* ── Chapter header ── */
+    .chapter {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(24px, 4vw, 64px);
+      margin-bottom: 56px;
+    }
+
+    .chapter-num {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 6px;
+      flex-shrink: 0;
+      width: 56px;
+    }
+
+    .chapter-copy h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .chapter-copy p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ── Sub-section label ── */
+    .sub-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.09);
+    }
+
+    /* ── Brand overview ── */
+    .brand-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(0,0,0,0.09);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .bov-card {
+      background: var(--white);
+      padding: 28px 28px 24px;
+    }
+
+    .bov-card-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .bov-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .bov-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .positioning-block {
+      background: var(--black);
+      border-radius: 12px;
+      padding: 40px 44px;
+      margin-bottom: 48px;
+    }
+
+    .positioning-block .pos-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 16px;
+    }
+
+    .positioning-block blockquote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      border: none;
+      padding: 0;
+    }
+
+    .positioning-block blockquote span { color: var(--accent); }
+
+    /* ── Logo section ── */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,0,0,0.09);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .logo-panel {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 200px;
+    }
+
+    .logo-panel.on-light { background: var(--white); }
+    .logo-panel.on-dark  { background: var(--black); }
+    .logo-panel.on-brand { background: var(--brand); }
+    .logo-panel.on-off   { background: var(--off-white); }
+
+    .logo-panel-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .logo-panel.on-light .logo-panel-label { color: var(--text-muted); }
+    .logo-panel.on-dark  .logo-panel-label { color: rgba(255,255,255,0.3); }
+    .logo-panel.on-brand .logo-panel-label { color: rgba(255,255,255,0.4); }
+    .logo-panel.on-off   .logo-panel-label { color: var(--text-muted); }
+
+    .logo-render {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .logo-wordmark.lw-dark  { color: var(--text-dark); }
+    .logo-wordmark.lw-white { color: var(--white); }
+
+    .logo-rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .logo-rule-card {
+      border-radius: 10px;
+      padding: 20px 22px;
+      border: 1px solid;
+    }
+
+    .logo-rule-card.do-card {
+      background: rgba(34,197,94,0.05);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    .logo-rule-card.dont-card {
+      background: rgba(239,68,68,0.04);
+      border-color: rgba(239,68,68,0.15);
+    }
+
+    .rule-tag {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+    }
+
+    .do-card   .rule-tag { background: rgba(34,197,94,0.12);  color: #16a34a; }
+    .dont-card .rule-tag { background: rgba(239,68,68,0.1);   color: #dc2626; }
+
+    .logo-rule-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .logo-rule-card li {
+      font-size: 0.83rem;
+      color: var(--text-dark);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .logo-rule-card li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    /* ── Color palette ── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .color-swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .swatch-body {
+      height: 100px;
+    }
+
+    .swatch-info {
+      background: var(--white);
+      padding: 14px 16px;
+    }
+
+    .swatch-name {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    .swatch-hex {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .swatch-use {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .color-usage-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .color-usage-table thead tr {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .color-usage-table th {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      text-align: left;
+    }
+
+    .color-usage-table td {
+      padding: 14px 20px;
+      font-size: 0.83rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      vertical-align: middle;
+    }
+
+    .color-usage-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+
+    .color-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── Typography ── */
+    .type-specimen {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,0,0,0.09);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .type-panel {
+      background: var(--white);
+      padding: 32px 28px;
+    }
+
+    .type-panel-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .type-panel-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .type-panel-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .type-panel-sample {
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 16px;
+    }
+
+    .type-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .type-scale-table th {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      text-align: left;
+    }
+
+    .type-scale-table td {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      vertical-align: middle;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .type-scale-table td:first-child {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* ── Voice & Tone ── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .voice-card {
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .voice-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(74,127,212,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+
+    .voice-card h4 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .voice-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .tone-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .tone-col { border-radius: 10px; overflow: hidden; }
+
+    .tone-col-header {
+      padding: 12px 18px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .tone-col.do-tone .tone-col-header {
+      background: rgba(34,197,94,0.1);
+      color: #16a34a;
+    }
+
+    .tone-col.dont-tone .tone-col-header {
+      background: rgba(239,68,68,0.08);
+      color: #dc2626;
+    }
+
+    .tone-col-body {
+      border: 1px solid rgba(0,0,0,0.07);
+      border-top: 0;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .tone-item {
+      padding: 14px 18px;
+      font-size: 0.83rem;
+      color: var(--text-dark);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      line-height: 1.5;
+    }
+
+    .tone-item:last-child { border-bottom: 0; }
+
+    .tone-item .tone-quote {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      margin-top: 4px;
+    }
+
+    /* ── Social media ── */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .platform-card {
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .platform-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .platform-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .platform-icon.linkedin { background: #0A66C2; }
+    .platform-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .platform-icon.tiktok { background: #010101; }
+    .platform-icon.whatsapp { background: #25d366; }
+
+    .platform-icon svg { width: 18px; height: 18px; fill: #fff; }
+
+    .platform-name {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .platform-role {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .platform-priority {
+      margin-left: auto;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .platform-priority.primary   { background: rgba(74,127,212,0.1); color: var(--accent); }
+    .platform-priority.secondary { background: rgba(0,0,0,0.06);    color: var(--text-muted); }
+
+    .platform-body {
+      padding: 20px 22px;
+    }
+
+    .platform-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .platform-body li {
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .platform-body li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    .platform-specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 14px 22px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .spec-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.05);
+      color: var(--text-muted);
+    }
+
+    /* ── Post format cards ── */
+    .post-format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .post-format-card {
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .pfc-header {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pfc-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: rgba(74,127,212,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .pfc-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .pfc-body {
+      padding: 16px 20px;
+    }
+
+    .pfc-body p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+
+    .pfc-example {
+      background: var(--off-white);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 0.75rem;
+      color: var(--text-dark);
+      line-height: 1.55;
+      font-style: italic;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* ── Content calendar ── */
+    .content-calendar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(0,0,0,0.09);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .cal-day {
+      background: var(--white);
+      padding: 18px 16px;
+    }
+
+    .cal-day-name {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .cal-tag {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+
+    .cal-tag.insight  { background: rgba(74,127,212,0.1);  color: var(--accent); }
+    .cal-tag.proof    { background: rgba(34,197,94,0.1);   color: #16a34a; }
+    .cal-tag.founder  { background: rgba(139,92,246,0.1);  color: #7c3aed; }
+    .cal-tag.tip      { background: rgba(234,179,8,0.1);   color: #b45309; }
+    .cal-tag.rest     { background: rgba(0,0,0,0.05);      color: var(--text-muted); }
+
+    .cal-desc {
+      font-size: 0.75rem;
+      color: var(--text-dark);
+      line-height: 1.45;
+    }
+
+    /* ── Imagery & Visual rules ── */
+    .imagery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .imagery-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.09);
+    }
+
+    .imagery-preview {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .imagery-preview.dark-env {
+      background: var(--black);
+      color: rgba(255,255,255,0.3);
+    }
+
+    .imagery-preview.data-vis {
+      background: var(--dark-2);
+      color: var(--accent);
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .imagery-preview.onsite {
+      background: #2d2418;
+      color: rgba(255,220,150,0.5);
+    }
+
+    .imagery-preview.avoid {
+      background: #fff0f0;
+      color: rgba(220,60,60,0.4);
+      position: relative;
+    }
+
+    .imagery-preview.avoid::after {
+      content: "✕";
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 1rem;
+      color: rgba(220,60,60,0.5);
+    }
+
+    .imagery-label {
+      background: var(--white);
+      padding: 12px 14px;
+    }
+
+    .imagery-label strong {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    .imagery-label span {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Hashtag block ── */
+    .hashtag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .hashtag-pill {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: var(--white);
+      color: var(--text-dark);
+    }
+
+    .hashtag-pill.core {
+      background: var(--brand);
+      color: var(--white);
+      border-color: var(--brand);
+    }
+
+    /* ── Caption formula ── */
+    .caption-formula {
+      background: var(--black);
+      border-radius: 12px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+    }
+
+    .caption-formula .cf-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+
+    .caption-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .caption-step {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .caption-step-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .caption-step-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .caption-step p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* ── Spacing & Grid rules ── */
+    .spacing-row {
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .spacing-card {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .spacing-card h4 {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .spacing-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .spacing-card code {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.7rem;
+      font-family: "IBM Plex Mono", monospace;
+      background: rgba(0,0,0,0.05);
+      padding: 2px 7px;
+      border-radius: 3px;
+      color: var(--accent);
+    }
+
+    /* ── Don'ts summary ── */
+    .donts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .dont-pill {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border: 1px solid rgba(239,68,68,0.15);
+      background: rgba(239,68,68,0.03);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .dont-x {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(239,68,68,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 900;
+      color: #dc2626;
+      margin-top: 1px;
+    }
+
+    .dont-pill p {
+      font-size: 0.78rem;
+      color: var(--text-dark);
+      line-height: 1.45;
+    }
+
+    /* ── Back cover ── */
+    .back-cover {
+      background: var(--brand);
+      padding: clamp(60px, 8vw, 100px) clamp(40px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .back-cover-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .contact-strip {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .contact-item span:first-child {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .contact-item span:last-child {
+      font-size: 0.9rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .doc-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+
+    .doc-footer p {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    .pos-trademark {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ── Utility ── */
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+
+    /* Data bar mini viz */
+    .mini-bars { display: flex; align-items: flex-end; gap: 4px; height: 36px; }
+    .mini-bar { width: 8px; border-radius: 2px 2px 0 0; background: var(--accent); opacity: 0.7; }
+
+    @media (max-width: 768px) {
+      .brand-overview-grid,
+      .logo-showcase,
+      .color-grid,
+      .type-specimen,
+      .voice-grid,
+      .tone-compare,
+      .platform-grid,
+      .post-format-grid,
+      .content-calendar,
+      .imagery-grid,
+      .caption-steps,
+      .donts-grid { grid-template-columns: 1fr; }
+      .logo-rules,
+      .color-grid,
+      .imagery-grid { grid-template-columns: 1fr 1fr; }
+      .chapter { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     COVER
+══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-logo-mark"><img src="assets/growxcel-logo-white.png" alt="Growxcel" /></div>
+    <span class="cover-brand-name">Growxcel</span>
+    <span class="cover-badge">Confidential</span>
+  </div>
+
+  <div class="cover-body">
+    <p class="cover-eyebrow">Official Document · Version 1.0 · 2026</p>
+    <h1 class="cover-title">Brand<br /><span>Guidelines</span></h1>
+    <p class="cover-desc">The complete reference for how Growxcel looks, speaks, and shows up — across every touchpoint from the website to social media to client proposals.</p>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">
+      <p>Profit Intelligence Systems™</p>
+      <p>Egypt · Saudi Arabia · UAE</p>
+    </div>
+    <div class="cover-footer-right">POS™</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CONTENTS
+══════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="sub-label">Table of Contents</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;margin-bottom:80px;">
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">01 — Brand Foundation</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">05 — Voice &amp; Tone</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">02 — Logo &amp; Identity</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">06 — Social Media</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">03 — Colour Palette</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">07 — Content Formats &amp; Calendar</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">04 — Typography</div>
+    <div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.07);font-size:0.83rem;color:var(--text-dark);">08 — Brand Don'ts</div>
+  </div>
+
+
+  <!-- ══════════ 01 BRAND FOUNDATION ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">01</span>
+    <div class="chapter-copy">
+      <h2>Brand Foundation</h2>
+      <p>What Growxcel is, what it stands for, and how that shapes everything visual and verbal.</p>
+    </div>
+  </div>
+
+  <div class="brand-overview-grid">
+    <div class="bov-card">
+      <div class="bov-card-label">Mission</div>
+      <h3>Close the profit gap</h3>
+      <p>Help business owners see exactly where margin disappears — and build the systems to stop it happening.</p>
+    </div>
+    <div class="bov-card">
+      <div class="bov-card-label">Vision</div>
+      <h3>Profit intelligence for every business in the region</h3>
+      <p>The first and most specialized firm in Egypt and the Middle East for strategic cost management and pricing.</p>
+    </div>
+    <div class="bov-card">
+      <div class="bov-card-label">Promise</div>
+      <h3>Systems that run after we leave</h3>
+      <p>Growxcel doesn't just audit — it builds operational control systems your team can sustain independently.</p>
+    </div>
+    <div class="bov-card">
+      <div class="bov-card-label">Positioning</div>
+      <h3>On-site. Expert-led. Result-owned.</h3>
+      <p>Every engagement happens inside your actual business environment — not remotely, not generically.</p>
+    </div>
+    <div class="bov-card">
+      <div class="bov-card-label">Founded</div>
+      <h3>Est. 2017 · 4× growth</h3>
+      <p>Built in Egypt, scaled to Saudi Arabia (7 cities) and the UAE (Dubai &amp; Ras Al Khaimah). 60+ clients. 5 sectors.</p>
+    </div>
+    <div class="bov-card">
+      <div class="bov-card-label">Trademark</div>
+      <h3>Profit Operating System™</h3>
+      <p>POS™ is Growxcel's proprietary framework: cost architecture, pricing logic, ERP readiness, reporting, budgeting.</p>
+    </div>
+  </div>
+
+  <div class="positioning-block">
+    <p class="pos-label">Core Positioning Statement</p>
+    <blockquote>"Your revenue tells one story. Your bank account tells another. <span>Growxcel closes that gap</span> — with cost visibility, pricing control, ERP-ready reporting, and profit decisions your team can act on."</blockquote>
+  </div>
+
+  <div class="sub-label">Brand Personality — Five Words</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+    <div style="padding:12px 20px;background:var(--black);color:var(--white);border-radius:8px;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">Authoritative</div>
+    <div style="padding:12px 20px;background:var(--black);color:var(--white);border-radius:8px;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">Direct</div>
+    <div style="padding:12px 20px;background:var(--black);color:var(--white);border-radius:8px;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">Specific</div>
+    <div style="padding:12px 20px;background:var(--black);color:var(--white);border-radius:8px;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">Operational</div>
+    <div style="padding:12px 20px;background:var(--accent);color:var(--white);border-radius:8px;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">Trusted</div>
+  </div>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 02 LOGO ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">02</span>
+    <div class="chapter-copy">
+      <h2>Logo &amp; Identity</h2>
+      <p>How the Growxcel mark appears across all background environments.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Logo Variations</div>
+  <div class="logo-showcase">
+    <div class="logo-panel on-light">
+      <div class="logo-render">
+        <img src="assets/growxcel-logo.jpg" class="logo-img on-light-filter" alt="Growxcel logo on white" />
+        <span class="logo-wordmark lw-dark">GROWXCEL</span>
+      </div>
+      <span class="logo-panel-label">On White / Light — Original</span>
+    </div>
+    <div class="logo-panel on-dark">
+      <div class="logo-render">
+        <img src="assets/growxcel-logo-white.png" class="logo-img on-dark-filter" alt="Growxcel logo on black" />
+        <span class="logo-wordmark lw-white">GROWXCEL</span>
+      </div>
+      <span class="logo-panel-label">On Black / Dark — White Version</span>
+    </div>
+    <div class="logo-panel on-brand">
+      <div class="logo-render">
+        <img src="assets/growxcel-logo-white.png" class="logo-img on-dark-filter" alt="Growxcel logo on brand blue" />
+        <span class="logo-wordmark lw-white">GROWXCEL</span>
+      </div>
+      <span class="logo-panel-label">On Brand Blue — White Version</span>
+    </div>
+    <div class="logo-panel on-off">
+      <div class="logo-render">
+        <img src="assets/growxcel-logo.jpg" class="logo-img on-light-filter" alt="Growxcel logo on off-white" />
+        <span class="logo-wordmark lw-dark">GROWXCEL</span>
+      </div>
+      <span class="logo-panel-label">On Off-White — Original</span>
+    </div>
+  </div>
+
+  <div class="logo-rules">
+    <div class="logo-rule-card do-card">
+      <span class="rule-tag">✓ Do</span>
+      <ul>
+        <li>Use the logo on black, white, off-white, or brand blue backgrounds only</li>
+        <li>Keep minimum clear space equal to the height of the "G" mark on all sides</li>
+        <li>Use the wordmark in ALL CAPS with tracking as specified</li>
+        <li>Link to LinkedIn profile when logo appears in digital contexts</li>
+        <li>Pair with the POS™ / Profit Operating System™ trademark when space allows</li>
+      </ul>
+    </div>
+    <div class="logo-rule-card dont-card">
+      <span class="rule-tag">✕ Don't</span>
+      <ul>
+        <li>Place the logo on busy photographs without a background block</li>
+        <li>Stretch, rotate, or alter the aspect ratio</li>
+        <li>Change the wordmark to lowercase or mixed case</li>
+        <li>Use the accent blue (#4a7fd4) as a background behind the logo</li>
+        <li>Add drop shadows, glows, or decorative effects to the mark</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 03 COLOUR ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">03</span>
+    <div class="chapter-copy">
+      <h2>Colour Palette</h2>
+      <p>A dark-first, enterprise system. Black is always the primary canvas. Blue is trust. White is data clarity.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Primary Palette</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#080808;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Growxcel Black</div>
+        <div class="swatch-hex">#080808</div>
+        <div class="swatch-use">Primary background, hero, all dark sections</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#082f73;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Brand Blue</div>
+        <div class="swatch-hex">#082f73</div>
+        <div class="swatch-use">CTA buttons, headings on light, primary brand expressions</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#4a7fd4;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Accent Blue</div>
+        <div class="swatch-hex">#4a7fd4</div>
+        <div class="swatch-use">Icons, accents, highlights on dark backgrounds</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#7ab0f5;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Accent Bright</div>
+        <div class="swatch-hex">#7ab0f5</div>
+        <div class="swatch-use">Data visualisations, positive trend indicators</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Secondary & Surface Palette</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.08);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-use">Text on dark, cards on dark backgrounds</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#f3f2ef;border-bottom:1px solid rgba(0,0,0,0.08);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Off-White</div>
+        <div class="swatch-hex">#F3F2EF</div>
+        <div class="swatch-use">Light section backgrounds (platform, services, method)</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#141414;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Dark Surface</div>
+        <div class="swatch-hex">#141414</div>
+        <div class="swatch-use">Cards, product panels, input fields on black</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#111111;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Text Dark</div>
+        <div class="swatch-hex">#111111</div>
+        <div class="swatch-use">Body text and headings on light backgrounds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Status Colours — Data &amp; Reporting Contexts Only</div>
+  <div class="color-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#ef4444;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Danger / Alert</div>
+        <div class="swatch-hex">#EF4444</div>
+        <div class="swatch-use">Cost gaps, margin risks, "Before" state in data visuals</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-body" style="background:#22c55e;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Success / Positive</div>
+        <div class="swatch-hex">#22C55E</div>
+        <div class="swatch-use">Resolved states, positive margins, "After" confirmations</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="color-usage-table">
+    <thead>
+      <tr>
+        <th>Colour</th>
+        <th>Use For</th>
+        <th>Never Use For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="color-dot" style="background:#080808;"></span>Growxcel Black</td>
+        <td>Hero backgrounds, dark sections, nav bar</td>
+        <td>Body text on white, small labels</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#082f73;"></span>Brand Blue</td>
+        <td>Primary CTA buttons, stat numbers on light, founder section headings</td>
+        <td>Background behind logo, large decorative fills</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#4a7fd4;"></span>Accent Blue</td>
+        <td>Icons on dark, eyebrow labels, hover states, data accents</td>
+        <td>Large background blocks, primary text</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#f3f2ef;border:1px solid rgba(0,0,0,0.1);border-radius:50%;"></span>Off-White</td>
+        <td>Section backgrounds alternating with black</td>
+        <td>Text colour, icon fills</td>
+      </tr>
+      <tr>
+        <td><span class="color-dot" style="background:#ef4444;"></span>Danger Red</td>
+        <td>Data visualisations only — cost gaps, risk indicators</td>
+        <td>Decorative use, social posts, branding</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 04 TYPOGRAPHY ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">04</span>
+    <div class="chapter-copy">
+      <h2>Typography</h2>
+      <p>Three fonts. Each with a strict role. Never mix their roles.</p>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-panel">
+      <div class="type-panel-label">Display — Brand Moments</div>
+      <div class="type-panel-name">Bricolage Grotesque</div>
+      <div class="type-panel-meta">Weight: 700–800 · Google Fonts</div>
+      <div class="type-panel-sample">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.4rem;line-height:1;color:var(--text-dark);letter-spacing:-0.03em;">Profit<br />Operating<br />System.</div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:14px;line-height:1.5;">Use only for: POS™ brand statements, ticker band copy, the system-statement headline on the website.</p>
+    </div>
+    <div class="type-panel">
+      <div class="type-panel-label">Heading — All Titles</div>
+      <div class="type-panel-name">Space Grotesk</div>
+      <div class="type-panel-meta">Weight: 500–700 · Google Fonts</div>
+      <div class="type-panel-sample">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;line-height:1.05;color:var(--text-dark);letter-spacing:-0.025em;">Our formula<br />delivers<br />success.</div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:14px;line-height:1.5;">Use for: all h1–h3 headings, hero title, section titles, card headlines, social media title slides.</p>
+    </div>
+    <div class="type-panel">
+      <div class="type-panel-label">Body — All Content</div>
+      <div class="type-panel-name">IBM Plex Sans</div>
+      <div class="type-panel-meta">Weight: 400–600 · Google Fonts</div>
+      <div class="type-panel-sample">
+        <div style="font-family:'IBM Plex Sans',sans-serif;font-size:0.95rem;line-height:1.75;color:var(--text-dark);">Your revenue tells one story. Your bank account tells another. Growxcel closes that gap with cost visibility, pricing control, and ERP-ready reporting.</div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:14px;line-height:1.5;">Use for: body copy, labels, form fields, captions, data annotations, nav links.</p>
+    </div>
+  </div>
+
+  <table class="type-scale-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Font</th>
+        <th>Size</th>
+        <th>Weight</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Hero Headline</td>
+        <td style="font-size:0.78rem;">Space Grotesk</td>
+        <td style="font-size:0.78rem;">clamp(2rem → 4rem)</td>
+        <td style="font-size:0.78rem;">700</td>
+        <td style="font-size:0.78rem;">Primary hero title only</td>
+      </tr>
+      <tr>
+        <td>Section H2</td>
+        <td style="font-size:0.78rem;">Space Grotesk</td>
+        <td style="font-size:0.78rem;">2rem (32px)</td>
+        <td style="font-size:0.78rem;">700</td>
+        <td style="font-size:0.78rem;">All section headings</td>
+      </tr>
+      <tr>
+        <td>Card H3</td>
+        <td style="font-size:0.78rem;">Space Grotesk</td>
+        <td style="font-size:0.78rem;">1.1–1.2rem</td>
+        <td style="font-size:0.78rem;">700</td>
+        <td style="font-size:0.78rem;">Service/platform card titles</td>
+      </tr>
+      <tr>
+        <td>Body</td>
+        <td style="font-size:0.78rem;">IBM Plex Sans</td>
+        <td style="font-size:0.78rem;">1rem (16px min)</td>
+        <td style="font-size:0.78rem;">400</td>
+        <td style="font-size:0.78rem;">All paragraphs — line-height 1.7</td>
+      </tr>
+      <tr>
+        <td>Eyebrow</td>
+        <td style="font-size:0.78rem;">IBM Plex Sans</td>
+        <td style="font-size:0.78rem;">0.62–0.68rem</td>
+        <td style="font-size:0.78rem;">700</td>
+        <td style="font-size:0.78rem;">Section labels, ALL CAPS, 0.2em tracking</td>
+      </tr>
+      <tr>
+        <td>Data Label</td>
+        <td style="font-size:0.78rem;">IBM Plex Sans</td>
+        <td style="font-size:0.78rem;">0.68–0.72rem</td>
+        <td style="font-size:0.78rem;">600–700</td>
+        <td style="font-size:0.78rem;">Chart labels, stat sub-labels, tags</td>
+      </tr>
+      <tr>
+        <td>Brand Statement</td>
+        <td style="font-size:0.78rem;">Bricolage Grotesque</td>
+        <td style="font-size:0.78rem;">Contextual (large)</td>
+        <td style="font-size:0.78rem;">800</td>
+        <td style="font-size:0.78rem;">POS™ display only</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 05 VOICE & TONE ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">05</span>
+    <div class="chapter-copy">
+      <h2>Voice &amp; Tone</h2>
+      <p>Growxcel speaks like the smartest person in the room who still gets to the point in one sentence.</p>
+    </div>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h4>Specific over vague</h4>
+      <p>Never say "we improve your profitability." Say "we show you which branch is eating your margin." Specificity signals expertise.</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h4>Results-first language</h4>
+      <p>Start with the outcome, not the service. "Margin visibility in 30 days" beats "we provide cost management consulting."</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h4>No fluff</h4>
+      <p>Cut adjectives that don't add information. "Comprehensive", "holistic", and "best-in-class" are never needed. Let numbers speak.</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h4>Owner-to-owner</h4>
+      <p>Speak directly to business owners and CFOs, not academic audiences. Use "your margin", "your team", "your branches."</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h4>System thinking</h4>
+      <p>Frame everything as systems, not one-off projects. "We build systems that run after we leave" — not "we deliver reports."</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>Authority through credentials</h4>
+      <p>Reference Dr. Rabab's PhD/DBA/CMA credentials and the team's specialization when establishing authority — never just "our experts."</p>
+    </div>
+  </div>
+
+  <div class="sub-label mt-32">Write Like This / Not Like That</div>
+  <div class="tone-compare">
+    <div class="tone-col do-tone">
+      <div class="tone-col-header">✓ Write like this</div>
+      <div class="tone-col-body">
+        <div class="tone-item">Your accountant records history. We build systems that shape your future.
+          <div class="tone-quote">Short. Contrast-led. The juxtaposition does the work.</div>
+        </div>
+        <div class="tone-item">We show you which product is profitable and which one is quietly killing your margin.
+          <div class="tone-quote">Specific pain point. Direct accusation of the problem.</div>
+        </div>
+        <div class="tone-item">30+ years. 60+ clients. One formula.
+          <div class="tone-quote">Data anchors trust. "One formula" makes complexity simple.</div>
+        </div>
+        <div class="tone-item">Implementation happens inside your actual environment — not remotely.
+          <div class="tone-quote">The negative ("not remotely") makes the USP land harder.</div>
+        </div>
+        <div class="tone-item">SAP is running. Nobody's using it properly. We fix that.
+          <div class="tone-quote">Three punchy sentences. Diagnose, confirm, resolve.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tone-col dont-tone">
+      <div class="tone-col-header">✕ Never write like this</div>
+      <div class="tone-col-body">
+        <div class="tone-item">We provide comprehensive, holistic cost management solutions for businesses.
+          <div class="tone-quote">Vague, adjective-heavy, says nothing specific.</div>
+        </div>
+        <div class="tone-item">Our team of highly qualified experts will help you achieve your financial goals.
+          <div class="tone-quote">"Highly qualified" and "financial goals" are meaningless filler.</div>
+        </div>
+        <div class="tone-item">We are passionate about helping businesses grow and excel! 🚀
+          <div class="tone-quote">No emojis in professional copy. "Passionate" is a red flag word.</div>
+        </div>
+        <div class="tone-item">Feel free to reach out to learn more about our services and how we can help!
+          <div class="tone-quote">Passive and non-committal. Tell them what to do, not what they "can" do.</div>
+        </div>
+        <div class="tone-item">Growxcel is a leading consulting firm operating in the MENA region.
+          <div class="tone-quote">"Leading" is self-declared and unverifiable. Be specific instead.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 06 SOCIAL MEDIA ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">06</span>
+    <div class="chapter-copy">
+      <h2>Social Media</h2>
+      <p>Platform-by-platform rules for how Growxcel shows up, what it posts, and how it communicates authority without noise.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Platform Strategy</div>
+  <div class="platform-grid">
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon linkedin">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div>
+          <div class="platform-name">LinkedIn</div>
+          <div class="platform-role">Primary B2B channel — highest ROI</div>
+        </div>
+        <span class="platform-priority primary">Primary</span>
+      </div>
+      <div class="platform-body">
+        <ul>
+          <li>Post 3–4× per week. Optimal times: Sunday–Tuesday, 8–10am KSA/EGY time</li>
+          <li>Mix: 40% insight posts, 30% client results, 20% founder authority, 10% Growxcel news</li>
+          <li>Native documents (carousels) outperform image posts by 3–5× on LinkedIn</li>
+          <li>Always tag Saudi Arabia, Egypt, or UAE location in posts for local reach</li>
+          <li>Dr. Rabab's personal profile should post 2× per week minimum — founder content drives 4× more trust</li>
+          <li>Reply to every comment within 4 hours during business days</li>
+          <li>No stock photography — use real on-site imagery or clean data visuals</li>
+        </ul>
+      </div>
+      <div class="platform-specs">
+        <span class="spec-tag">1200 × 627px cover</span>
+        <span class="spec-tag">1080 × 1080px posts</span>
+        <span class="spec-tag">Max 3,000 chars</span>
+        <span class="spec-tag">3–5 hashtags</span>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div>
+          <div class="platform-name">Instagram</div>
+          <div class="platform-role">Brand visibility + founder story</div>
+        </div>
+        <span class="platform-priority secondary">Secondary</span>
+      </div>
+      <div class="platform-body">
+        <ul>
+          <li>Post 4–5× per week: 3 feed posts + 5–7 stories</li>
+          <li>Feed: dark-first branded visuals. Stories: behind-the-scenes, on-site moments, quick tips</li>
+          <li>Reels: 30–60 second "one insight" clips — Dr. Rabab speaking to camera, plain background</li>
+          <li>No lifestyle content. Every post should have a business insight or proof point</li>
+          <li>Use Arabic captions for Saudi/Egyptian audiences with English subtitle option in Reels</li>
+          <li>Story polls: "Does your team know the actual cost per branch?" drive engagement and lead intent</li>
+        </ul>
+      </div>
+      <div class="platform-specs">
+        <span class="spec-tag">1080 × 1080px feed</span>
+        <span class="spec-tag">1080 × 1920px story</span>
+        <span class="spec-tag">Max 2,200 chars</span>
+        <span class="spec-tag">5–10 hashtags</span>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon tiktok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#fff"/></svg>
+        </div>
+        <div>
+          <div class="platform-name">TikTok</div>
+          <div class="platform-role">Awareness — Saudi &amp; Egyptian youth market</div>
+        </div>
+        <span class="platform-priority secondary">Optional</span>
+      </div>
+      <div class="platform-body">
+        <ul>
+          <li>Only activate if there is capacity to post 3+ times per week consistently</li>
+          <li>Format: 45–90 second "cost myth busting" or "what owners get wrong about pricing" clips</li>
+          <li>Tone: same authority, but faster pacing — one insight per video, no padding</li>
+          <li>Arabic-first for Saudi &amp; Egyptian audiences. English subtitles always</li>
+          <li>Never post content that could be interpreted as financial advice</li>
+        </ul>
+      </div>
+      <div class="platform-specs">
+        <span class="spec-tag">1080 × 1920px</span>
+        <span class="spec-tag">45–90 seconds</span>
+        <span class="spec-tag">Arabic captions</span>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/></svg>
+        </div>
+        <div>
+          <div class="platform-name">WhatsApp Business</div>
+          <div class="platform-role">Client communication + lead nurturing</div>
+        </div>
+        <span class="platform-priority primary">Active</span>
+      </div>
+      <div class="platform-body">
+        <ul>
+          <li>Maintain a broadcast list for monthly insights: 1 value-packed message per month max</li>
+          <li>Never send sales pitches via WhatsApp — only value content or follow-ups to conversations already started</li>
+          <li>Response SLA: within 2 hours during business hours (Sun–Thu, 10am–6pm)</li>
+          <li>Status updates: share 1–2 data insight cards per week visible to saved contacts</li>
+          <li>Always introduce yourself and the company in the first message to new contacts</li>
+        </ul>
+      </div>
+      <div class="platform-specs">
+        <span class="spec-tag">Business Profile</span>
+        <span class="spec-tag">Verified number</span>
+        <span class="spec-tag">Quick replies set up</span>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 07 CONTENT FORMATS & CALENDAR ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">07</span>
+    <div class="chapter-copy">
+      <h2>Content Formats &amp; Calendar</h2>
+      <p>Six content formats. A weekly rhythm. Every post should teach, prove, or earn.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">The Six Post Formats</div>
+  <div class="post-format-grid">
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">01</div>
+        <div class="pfc-title">The Profit Insight</div>
+      </div>
+      <div class="pfc-body">
+        <p>One cost or margin concept explained in plain language. No jargon. Teach the audience something they can use today.</p>
+        <div class="pfc-example">"Most restaurant owners calculate food cost wrong. They use purchase price — not actual consumption per dish. That 4% gap is where margin goes. Here's the right formula:"</div>
+      </div>
+    </div>
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">02</div>
+        <div class="pfc-title">The Before / After</div>
+      </div>
+      <div class="pfc-body">
+        <p>Show the gap between what a client had and what Growxcel built. Always real results — never hypothetical.</p>
+        <div class="pfc-example">"Client: F&amp;B group, Saudi Arabia. Before: Revenue growing, margin shrinking. After: Cost architecture built for 12 branches. Margin visibility up 22% in 90 days."</div>
+      </div>
+    </div>
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">03</div>
+        <div class="pfc-title">The Founder Frame</div>
+      </div>
+      <div class="pfc-body">
+        <p>Dr. Rabab shares a perspective from 30+ years of experience. First person, specific story or lesson — not generic advice.</p>
+        <div class="pfc-example">"In 2018 I walked into a factory where the MD had no idea which product line was profitable. The ERP had been running for 3 years. The problem wasn't data — it was accountability structure."</div>
+      </div>
+    </div>
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">04</div>
+        <div class="pfc-title">The Question Post</div>
+      </div>
+      <div class="pfc-body">
+        <p>A single diagnostic question that exposes a gap. No answer given — forces the reader to self-assess and comment.</p>
+        <div class="pfc-example">"If your top salesperson left today — would your margin improve or worsen? Most owners can't answer this. That's the problem."</div>
+      </div>
+    </div>
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">05</div>
+        <div class="pfc-title">The Data Visual</div>
+      </div>
+      <div class="pfc-body">
+        <p>A clean branded graphic with one data point or chart. Uses the dark brand palette. Always has a source or context label.</p>
+        <div class="pfc-example">Dark background. White headline: "78% of SME costs are unmapped." Accent-blue bar chart. IBM Plex Sans body annotation. Growxcel wordmark bottom-right.</div>
+      </div>
+    </div>
+
+    <div class="post-format-card">
+      <div class="pfc-header">
+        <div class="pfc-num">06</div>
+        <div class="pfc-title">The On-Site Moment</div>
+      </div>
+      <div class="pfc-body">
+        <p>Real photography from an engagement — team in the client's environment. No posed stock shots. Authentic operational settings.</p>
+        <div class="pfc-example">"Day 3 on-site with a Cairo manufacturing client. Mapping 11 cost centres before we build the pricing model. This is where the work actually happens."</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sub-label">Weekly Content Rhythm — LinkedIn &amp; Instagram</div>
+  <div class="content-calendar">
+    <div class="cal-day">
+      <div class="cal-day-name">Sunday</div>
+      <span class="cal-tag insight">Insight</span>
+      <p class="cal-desc">Profit or cost concept. Educational. Sets the tone for the week.</p>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Monday</div>
+      <span class="cal-tag proof">Proof</span>
+      <p class="cal-desc">Before/After result or client stat. Hard evidence of the formula working.</p>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Tuesday</div>
+      <span class="cal-tag founder">Founder</span>
+      <p class="cal-desc">Dr. Rabab's perspective. Story, lesson, or industry observation.</p>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Wednesday</div>
+      <span class="cal-tag tip">Question</span>
+      <p class="cal-desc">A single diagnostic question. No answer. Drives comments and DMs.</p>
+    </div>
+    <div class="cal-day">
+      <div class="cal-day-name">Thursday</div>
+      <span class="cal-tag insight">Visual</span>
+      <p class="cal-desc">Data graphic or on-site photo. Branded. Visual proof of work and expertise.</p>
+    </div>
+  </div>
+
+  <div class="caption-formula">
+    <p class="cf-label">The Growxcel Caption Formula — Every Post</p>
+    <div class="caption-steps">
+      <div class="caption-step">
+        <div class="caption-step-num">STEP 01</div>
+        <div class="caption-step-title">The Hook</div>
+        <p>First line = the most important. Must stop the scroll. Use a question, a surprising stat, or a direct challenge. Max 12 words.</p>
+      </div>
+      <div class="caption-step">
+        <div class="caption-step-num">STEP 02</div>
+        <div class="caption-step-title">The Problem</div>
+        <p>Name the specific pain. Make the reader feel seen — "this is happening in your business right now."</p>
+      </div>
+      <div class="caption-step">
+        <div class="caption-step-num">STEP 03</div>
+        <div class="caption-step-title">The Insight</div>
+        <p>Teach or prove something. One clear idea. Either a formula, a framework, or a real result. Specific numbers always win.</p>
+      </div>
+      <div class="caption-step">
+        <div class="caption-step-num">STEP 04</div>
+        <div class="caption-step-title">The CTA</div>
+        <p>One action only. "Comment below", "DM us 'AUDIT'", or "Book a cost audit at growxcel.com". Never two CTAs in one post.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Approved Hashtag Sets</div>
+  <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:16px;">Use 3–5 hashtags on LinkedIn. 8–12 on Instagram. Always mix core brand tags with audience-specific ones.</p>
+
+  <div class="sub-label mt-16" style="font-size:0.55rem;">Core Brand Tags — Always Include</div>
+  <div class="hashtag-group">
+    <span class="hashtag-pill core">#Growxcel</span>
+    <span class="hashtag-pill core">#ProfitOperatingSystem</span>
+    <span class="hashtag-pill core">#ProfitIntelligence</span>
+    <span class="hashtag-pill core">#CostManagement</span>
+  </div>
+
+  <div class="sub-label mt-16" style="font-size:0.55rem;">Industry Tags — Rotate By Sector</div>
+  <div class="hashtag-group">
+    <span class="hashtag-pill">#FnBBusiness</span>
+    <span class="hashtag-pill">#RestaurantManagement</span>
+    <span class="hashtag-pill">#ManufacturingBusiness</span>
+    <span class="hashtag-pill">#HealthcareBusiness</span>
+    <span class="hashtag-pill">#ERPImplementation</span>
+    <span class="hashtag-pill">#SAPConsulting</span>
+    <span class="hashtag-pill">#BusinessProfitability</span>
+    <span class="hashtag-pill">#MarginManagement</span>
+  </div>
+
+  <div class="sub-label mt-16" style="font-size:0.55rem;">Geographic Tags — Always Include 1–2</div>
+  <div class="hashtag-group">
+    <span class="hashtag-pill">#SaudiArabia</span>
+    <span class="hashtag-pill">#Egypt</span>
+    <span class="hashtag-pill">#UAE</span>
+    <span class="hashtag-pill">#BusinessEgypt</span>
+    <span class="hashtag-pill">#SaudiBusinessOwners</span>
+    <span class="hashtag-pill">#MiddleEastBusiness</span>
+  </div>
+
+  <div class="sub-label mt-32">Visual Design Rules for Social Posts</div>
+  <div class="imagery-grid">
+    <div class="imagery-card">
+      <div class="imagery-preview dark-env">Dark Canvas</div>
+      <div class="imagery-label">
+        <strong>Use the dark system</strong>
+        <span>Black (#080808) backgrounds for all branded graphic posts. Accent blue for data. White for headline text.</span>
+      </div>
+    </div>
+    <div class="imagery-card">
+      <div class="imagery-preview data-vis">
+        <div class="mini-bars">
+          <div class="mini-bar" style="height:20px;"></div>
+          <div class="mini-bar" style="height:28px;"></div>
+          <div class="mini-bar" style="height:18px;"></div>
+          <div class="mini-bar" style="height:35px;"></div>
+        </div>
+        <span>Data Visual</span>
+      </div>
+      <div class="imagery-label">
+        <strong>Data visuals over decorations</strong>
+        <span>Charts, bars, comparison tables. Numbers do the creative work — not abstract shapes or gradients.</span>
+      </div>
+    </div>
+    <div class="imagery-card">
+      <div class="imagery-preview onsite">On-Site Photography</div>
+      <div class="imagery-label">
+        <strong>Real on-site moments</strong>
+        <span>Team working inside client operations. Authentic environments — kitchens, factories, offices. No staged setups.</span>
+      </div>
+    </div>
+    <div class="imagery-card">
+      <div class="imagery-preview avoid">Stock Photos / Emojis</div>
+      <div class="imagery-label">
+        <strong>Avoid entirely</strong>
+        <span>No stock photography, no generic business handshake shots, no emoji icons in graphic assets.</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+
+  <!-- ══════════ 08 BRAND DON'TS ══════════ -->
+  <div class="chapter">
+    <span class="chapter-num">08</span>
+    <div class="chapter-copy">
+      <h2>Brand Don'ts</h2>
+      <p>The fastest way to undermine a premium brand is small violations made consistently. These are absolute rules.</p>
+    </div>
+  </div>
+
+  <div class="donts-grid">
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never use emojis as icons in any digital asset — website, social, email, or proposals</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never use stock photography of generic business people, handshakes, or cityscapes</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never describe Growxcel as "passionate", "holistic", "end-to-end", or "leading"</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never use the danger red (#EF4444) in branding contexts — only in data visuals</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never place white text on the accent blue (#4A7FD4) — contrast ratio is insufficient</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never post without a clear CTA — every post must tell the reader one thing to do next</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never use Bricolage Grotesque for body text, captions, or data labels — display use only</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never claim specific client names in public posts without written client approval</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never comment on competitor firms — ignore, don't engage negatively</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never mix font roles — Space Grotesk headlines, IBM Plex Sans body. No exceptions.</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never post personal or lifestyle content on the company LinkedIn page</p></div>
+    <div class="dont-pill"><div class="dont-x">✕</div><p>Never send unsolicited cold DMs promoting services on any social platform</p></div>
+  </div>
+
+</div><!-- /page -->
+
+
+<!-- ══════════════════════════════════════════
+     BACK COVER
+══════════════════════════════════════════ -->
+<div class="back-cover">
+  <h2 class="back-cover-title">The formula is built.<br />Now it needs to run.</h2>
+
+  <div class="contact-strip">
+    <div class="contact-item">
+      <span>Website</span>
+      <span>growxcel.com</span>
+    </div>
+    <div class="contact-item">
+      <span>Email</span>
+      <span>info@growxcel.com</span>
+    </div>
+    <div class="contact-item">
+      <span>Saudi Arabia</span>
+      <span>+966 501 240 393</span>
+    </div>
+    <div class="contact-item">
+      <span>Egypt</span>
+      <span>+2 0102 7000 696</span>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div>
+      <p>Growxcel Brand Guidelines · Version 1.0 · 2026</p>
+      <p>Confidential — Internal &amp; Approved Partners Only</p>
+    </div>
+    <div class="pos-trademark">Profit Operating System™</div>
+  </div>
+</div>
+
+</body>
+</html>

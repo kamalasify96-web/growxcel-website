@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Growxcel · Post 2 · Proof v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #080808;
+      --navy:   #082f73;
+      --accent: #4a7fd4;
+      --bright: #7ab0f5;
+      --red:    #ef4444;
+      --green:  #22c55e;
+      --white:  #ffffff;
+      --font-head:  'Space Grotesk', sans-serif;
+      --font-body:  'IBM Plex Sans', sans-serif;
+      --font-brand: 'Bricolage Grotesque', sans-serif;
+      --font-ar-head: 'Cairo', sans-serif;
+      --font-ar-body: 'IBM Plex Arabic', 'Cairo', sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .post {
+      width: 1080px;
+      height: 1350px;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      padding: 64px;
+    }
+
+    /* ── BG ── */
+    .post::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 50% 62%, rgba(8,47,115,0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 500px 500px at 90% 5%, rgba(34,197,94,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .post::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(74,127,212,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,127,212,0.025) 1px, transparent 1px);
+      background-size: 90px 90px;
+      pointer-events: none;
+    }
+
+    .vignette {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+    }
+    .stripe {
+      position: absolute; left:0; top:0; bottom:0; width:4px; z-index:2;
+      background: linear-gradient(to bottom,
+        transparent, var(--red) 20%, rgba(239,68,68,.4) 48%, var(--green) 52%, rgba(34,197,94,.4) 80%, transparent);
+    }
+
+    .content { position:relative; z-index:3; flex:1; display:flex; flex-direction:column; gap:0; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom: 56px;
+    }
+    .logo-lock { display:flex; align-items:center; gap:14px; }
+    .logo-mark { width:80px; height:80px; object-fit:contain; filter:contrast(20) brightness(1.1); mix-blend-mode:screen; }
+    .logo-name { font-family:var(--font-head); font-weight:700; font-size:22px; letter-spacing:.14em; text-transform:uppercase; color:var(--white); }
+    .badge { font-family:var(--font-body); font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--green); border:1px solid rgba(34,197,94,.3); padding:6px 14px; border-radius:20px; }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-family:var(--font-body); font-size:13px; font-weight:600;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+      display:flex; align-items:center; gap:12px;
+      margin-bottom: 24px;
+    }
+    .eyebrow::before { content:''; width:28px; height:1px; background:currentColor; flex-shrink:0; }
+
+    /* ── HEADLINE ── */
+    .headline {
+      font-family:var(--font-brand); font-weight:800;
+      font-size:88px; line-height:1.04; letter-spacing:-.028em;
+      color:var(--white);
+      margin-bottom: 52px;
+    }
+    .headline em { font-style:normal; color:var(--green); }
+
+    /* ── BIG NUMBERS ── */
+    .numbers-block {
+      display:flex; align-items:stretch; gap:0;
+      border:1px solid rgba(255,255,255,.07); border-radius:8px; overflow:hidden;
+      margin-bottom: 40px;
+    }
+
+    .num-side {
+      flex:1; padding:48px 52px; position:relative; overflow:hidden;
+    }
+    .num-side::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    }
+    .num-side.before::before { background:var(--red); }
+    .num-side.after::before  { background:var(--green); }
+
+    .num-side.before { background:rgba(239,68,68,.04); border-right:1px solid rgba(255,255,255,.07); }
+    .num-side.after  { background:rgba(34,197,94,.04); }
+
+    .num-tag {
+      font-family:var(--font-body); font-size:12px; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .num-side.before .num-tag { color:var(--red); }
+    .num-side.after  .num-tag { color:var(--green); }
+
+    .num-big {
+      font-family:var(--font-brand); font-weight:800;
+      font-size:148px; line-height:.9; letter-spacing:-.04em;
+    }
+    .num-side.before .num-big { color:rgba(239,68,68,.55); }
+    .num-side.after  .num-big { color:var(--green); }
+
+    .num-unit {
+      font-family:var(--font-body); font-size:18px;
+      color:rgba(255,255,255,.35); margin-top:16px; line-height:1.5;
+    }
+
+    /* vs divider */
+    .num-divider {
+      position:absolute; left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      width:52px; height:52px;
+      background:var(--black); border:1px solid rgba(255,255,255,.1);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-head); font-size:11px; font-weight:700;
+      color:rgba(255,255,255,.3); letter-spacing:.06em; text-transform:uppercase;
+      z-index:2;
+    }
+
+    /* ── DELTA STAT ── */
+    .delta-row {
+      display:flex; align-items:center; gap:24px;
+      padding: 32px 40px;
+      background:rgba(34,197,94,.06); border:1px solid rgba(34,197,94,.15); border-radius:8px;
+      margin-bottom: 40px;
+    }
+    .delta-icon {
+      width:52px; height:52px; border-radius:50%;
+      background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.25);
+      display:flex; align-items:center; justify-content:center;
+      font-size:22px; flex-shrink:0; color:var(--green); font-weight:700;
+    }
+    .delta-text {}
+    .delta-num {
+      font-family:var(--font-head); font-weight:700; font-size:32px;
+      color:var(--green); letter-spacing:-.02em;
+    }
+    .delta-desc {
+      font-family:var(--font-body); font-size:18px;
+      color:rgba(255,255,255,.5); margin-top:2px;
+    }
+
+    /* ── CONTEXT ── */
+    .context-line {
+      font-family:var(--font-body); font-size:22px; font-weight:400;
+      line-height:1.6; color:rgba(255,255,255,.42);
+      margin-bottom: 48px;
+    }
+    .context-line strong { color:rgba(255,255,255,.72); font-weight:500; }
+
+    /* ── BOTTOM ── */
+    .bottom-bar {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      margin-top:auto;
+      padding-top:32px; border-top:1px solid rgba(255,255,255,.07);
+    }
+    .dr-name { font-family:var(--font-head); font-weight:700; font-size:20px; color:var(--white); margin-bottom:4px; }
+    .dr-sub  { font-family:var(--font-body); font-size:16px; color:rgba(255,255,255,.4); line-height:1.6; }
+    .dr-sub span { color:var(--accent); }
+    .cta { text-align:right; }
+    .cta-label { display:block; font-family:var(--font-body); font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-bottom:4px; }
+    .cta-main  { font-family:var(--font-body); font-size:20px; color:var(--accent); font-weight:500; }
+  </style>
+</head>
+<body>
+  <div class="post">
+    <div class="vignette"></div>
+    <div class="stripe"></div>
+
+    <div class="content">
+
+      <!-- TOP -->
+      <div class="top-bar">
+        <div class="logo-lock">
+          <img src="../assets/growxcel-logo-white.png" class="logo-mark" alt="Growxcel" />
+          <span class="logo-name">Growxcel</span>
+        </div>
+        <span class="badge">Client Proof</span>
+      </div>
+
+      <!-- EYEBROW + HEADLINE -->
+      <div class="eyebrow">Saudi Restaurant Group · 6 Months</div>
+      <h1 class="headline">
+        No staff cuts.<br>
+        No menu changes.<br>
+        <em>System fixed.</em>
+      </h1>
+
+      <!-- NUMBERS -->
+      <div class="numbers-block">
+        <div class="num-side before">
+          <div class="num-tag">Before</div>
+          <div class="num-big">42<span style="font-size:72px">%</span></div>
+          <div class="num-unit">of revenue<br>going to costs</div>
+        </div>
+        <div class="num-divider">→</div>
+        <div class="num-side after">
+          <div class="num-tag">After</div>
+          <div class="num-big">31<span style="font-size:72px">%</span></div>
+          <div class="num-unit">of revenue<br>going to costs</div>
+        </div>
+      </div>
+
+      <!-- DELTA -->
+      <div class="delta-row">
+        <div class="delta-icon">↓</div>
+        <div class="delta-text">
+          <div class="delta-num">11 percentage points recovered</div>
+          <div class="delta-desc">That's real margin, back in the business</div>
+        </div>
+      </div>
+
+      <!-- CONTEXT -->
+      <p class="context-line">
+        We didn't cut corners. We <strong>fixed the system</strong> that tracks<br>
+        what things actually cost — and the numbers followed.
+      </p>
+
+      <!-- FOOTER -->
+      <div class="bottom-bar">
+        <div>
+          <div class="dr-name">Dr. Rabab Mostafa</div>
+          <div class="dr-sub">CEO · Growxcel · <span>30+ Years</span> · Egypt · Saudi Arabia · UAE</div>
+        </div>
+        <div class="cta">
+          <span class="cta-label">What's your cost structure?</span>
+          <span class="cta-main">Book a free audit →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

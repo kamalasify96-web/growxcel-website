@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Growxcel · Post 2 · Proof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080808;
+      --accent:  #4a7fd4;
+      --bright:  #7ab0f5;
+      --red:     #ef4444;
+      --green:   #22c55e;
+      --white:   #ffffff;
+      --muted:   rgba(255,255,255,0.38);
+      --border:  rgba(255,255,255,0.10);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .post {
+      width: 1080px;
+      height: 1350px;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      padding: 64px;
+      overflow: hidden;
+    }
+
+    /* grid */
+    .post::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(74,127,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,127,212,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+      animation: grid-pulse 5s ease-in-out infinite;
+    }
+    @keyframes grid-pulse {
+      0%,100%{ opacity:.7 } 50%{ opacity:1.3 }
+    }
+
+    /* vignette */
+    .vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0,0,0,0.6) 100%);
+      pointer-events: none;
+    }
+
+    /* left accent line */
+    .accent-line {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom,
+        transparent, rgba(74,127,212,0.9) 30%, rgba(122,176,245,1) 50%, rgba(74,127,212,0.9) 70%, transparent);
+      animation: line-pulse 3s ease-in-out infinite;
+    }
+    @keyframes line-pulse {
+      0%,100%{ opacity:.4; transform:scaleY(.8) } 50%{ opacity:1; transform:scaleY(1) }
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative;
+      animation: fade-down .7s .1s ease both;
+    }
+    @keyframes fade-down {
+      from{ opacity:0; transform:translateY(-14px) }
+      to  { opacity:1; transform:translateY(0) }
+    }
+
+    .logo-lock { display:flex; align-items:center; gap:14px; }
+    .logo-mark {
+      width:80px; height:80px; object-fit:contain;
+      filter:contrast(20) brightness(1.1); mix-blend-mode:screen;
+    }
+    .logo-name {
+      font-family:var(--font-head); font-weight:700; font-size:22px;
+      letter-spacing:.14em; text-transform:uppercase; color:var(--white);
+    }
+    .post-type {
+      font-family:var(--font-body); font-size:12px; font-weight:500;
+      letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+      border:1px solid rgba(74,127,212,.35); padding:6px 14px; border-radius:20px;
+    }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-family:var(--font-body); font-size:13px; font-weight:500;
+      letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+      display:flex; align-items:center; gap:10px;
+      position:relative;
+      animation: fade-up .6s .4s ease both;
+    }
+    .eyebrow::before {
+      content:''; width:28px; height:1px; background:var(--accent); flex-shrink:0;
+    }
+    @keyframes fade-up {
+      from{ opacity:0; transform:translateY(18px) }
+      to  { opacity:1; transform:translateY(0) }
+    }
+
+    /* ── HEADLINE ── */
+    .headline {
+      font-family:var(--font-head); font-size:76px; font-weight:700;
+      line-height:1.06; letter-spacing:-.025em; color:var(--white);
+      margin-top:20px;
+      animation: fade-up .7s .6s ease both;
+    }
+    .headline em { font-style:normal; color:var(--green); }
+
+    /* ── COMPARISON BLOCK ── */
+    .comparison {
+      display:flex; gap:0;
+      border:1px solid var(--border); border-radius:6px; overflow:hidden;
+      position:relative;
+      animation: fade-up .7s .9s ease both;
+    }
+
+    .comp-side {
+      flex:1; padding:48px 44px; position:relative; overflow:hidden;
+    }
+    .comp-side.before { border-right:1px solid var(--border); }
+
+    /* animated background fill */
+    .comp-side.before::before {
+      content:''; position:absolute; inset:0;
+      background:rgba(239,68,68,.06);
+      transform:scaleX(0); transform-origin:left;
+      animation: fill-in .8s 1.4s ease both;
+    }
+    .comp-side.after::before {
+      content:''; position:absolute; inset:0;
+      background:rgba(34,197,94,.06);
+      transform:scaleX(0); transform-origin:left;
+      animation: fill-in .8s 1.7s ease both;
+    }
+    @keyframes fill-in {
+      from{ transform:scaleX(0) }
+      to  { transform:scaleX(1) }
+    }
+
+    /* top color bar on each side */
+    .comp-side::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      transform:scaleX(0); transform-origin:left;
+    }
+    .comp-side.before::after { background:var(--red);   animation: bar-grow .6s 1.4s ease both; }
+    .comp-side.after::after  { background:var(--green); animation: bar-grow .6s 1.7s ease both; }
+    @keyframes bar-grow {
+      from{ transform:scaleX(0) } to{ transform:scaleX(1) }
+    }
+
+    .side-tag {
+      font-family:var(--font-body); font-size:12px; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase;
+      margin-bottom:20px; position:relative;
+    }
+    .comp-side.before .side-tag { color:var(--red); }
+    .comp-side.after  .side-tag { color:var(--green); }
+
+    .big-number {
+      font-family:var(--font-head); font-weight:700; line-height:1;
+      letter-spacing:-.03em; position:relative;
+      font-size:120px;
+    }
+    .comp-side.before .big-number { color:var(--red); }
+    .comp-side.after  .big-number { color:var(--green); }
+
+    .number-label {
+      font-family:var(--font-body); font-size:17px;
+      color:rgba(255,255,255,.45); margin-top:14px; line-height:1.5;
+    }
+
+    /* divider label in centre */
+    .comp-divider {
+      position:absolute; left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      width:52px; height:52px;
+      background:var(--black); border:1px solid var(--border);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-head); font-size:11px; font-weight:700;
+      color:var(--muted); letter-spacing:.06em; text-transform:uppercase;
+      z-index:2;
+      animation: pop-in .5s 1.6s ease both;
+    }
+    @keyframes pop-in {
+      from{ opacity:0; transform:translate(-50%,-50%) scale(.5) }
+      to  { opacity:1; transform:translate(-50%,-50%) scale(1) }
+    }
+
+    /* ── CONTEXT LINE ── */
+    .context {
+      font-family:var(--font-body); font-size:22px; font-weight:400;
+      line-height:1.55; color:rgba(255,255,255,.52);
+      animation: fade-up .6s 2s ease both;
+    }
+    .context strong { color:rgba(255,255,255,.8); font-weight:500; }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      animation: fade-up .6s 2.2s ease both;
+    }
+    .dr-credit { font-family:var(--font-body); font-size:18px; color:rgba(255,255,255,.55); line-height:1.7; }
+    .dr-credit strong { display:block; color:rgba(255,255,255,.9); font-weight:600; font-size:20px; }
+    .cta-hint { font-family:var(--font-body); font-size:18px; color:var(--accent); text-align:right; line-height:1.7; }
+    .cta-hint span { display:block; color:rgba(255,255,255,.4); font-size:13px; letter-spacing:.1em; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+  <div class="post">
+    <div class="vignette"></div>
+    <div class="accent-line"></div>
+
+    <!-- 1. LOGO -->
+    <div class="top-bar">
+      <div class="logo-lock">
+        <img src="../assets/growxcel-logo-white.png" class="logo-mark" alt="Growxcel" />
+        <span class="logo-name">Growxcel</span>
+      </div>
+      <span class="post-type">Proof</span>
+    </div>
+
+    <!-- 2. EYEBROW + HEADLINE -->
+    <div>
+      <div class="eyebrow">Client Result · Saudi Arabia</div>
+      <h1 class="headline">No staff cuts.<br>No menu changes.<br><em>System fixed.</em></h1>
+    </div>
+
+    <!-- 3. COMPARISON -->
+    <div class="comparison">
+      <div class="comp-side before">
+        <div class="side-tag">Before</div>
+        <div class="big-number" id="n-before">42</div>
+        <div class="number-label">% of revenue<br>going to costs</div>
+      </div>
+      <div class="comp-divider">vs</div>
+      <div class="comp-side after">
+        <div class="side-tag">After 6 months</div>
+        <div class="big-number" id="n-after">31</div>
+        <div class="number-label">% of revenue<br>going to costs</div>
+      </div>
+    </div>
+
+    <!-- 4. CONTEXT -->
+    <p class="context">
+      Saudi restaurant group. <strong>11 percentage points recovered.</strong><br>
+      We fixed the system that tracks what things actually cost.
+    </p>
+
+    <!-- 5. FOOTER -->
+    <div class="bottom-bar">
+      <div class="dr-credit">
+        <strong>Dr. Rabab Mostafa</strong>
+        CEO · Growxcel · 30+ years · Egypt · Saudi Arabia · UAE
+      </div>
+      <div class="cta-hint">
+        <span>What's your cost structure?</span>
+        Book a free audit →
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function countUp(el, from, to, delay, duration) {
+      setTimeout(() => {
+        const start = performance.now();
+        function step(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(from + (to - from) * ease);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, delay);
+    }
+
+    countUp(document.getElementById('n-before'), 0, 42, 1400, 1000);
+    countUp(document.getElementById('n-after'),  42, 31, 1800, 900);
+  </script>
+</body>
+</html>

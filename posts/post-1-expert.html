@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Growxcel · Post 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080808;
+      --brand:   #082f73;
+      --accent:  #4a7fd4;
+      --bright:  #7ab0f5;
+      --white:   #ffffff;
+      --muted:   rgba(255,255,255,0.38);
+      --border:  rgba(255,255,255,0.08);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    /* ── POST CANVAS ── */
+    .post {
+      width: 1080px;
+      height: 1350px;
+      background: var(--black);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      padding: 64px;
+      overflow: hidden;
+    }
+
+    /* subtle grid texture */
+    .post::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(74,127,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,127,212,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-lock {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: contrast(20) brightness(1.1);
+      mix-blend-mode: screen;
+    }
+
+    .logo-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .post-type {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(74,127,212,0.35);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── TEXT BLOCK ── */
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .headline {
+      font-family: var(--font-head);
+      font-size: 86px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.028em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: var(--bright);
+    }
+
+    .subline {
+      font-family: var(--font-body);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.52);
+      max-width: 860px;
+    }
+
+    /* ── DATA ROW ── */
+    .data-row {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .data-item {
+      flex: 1;
+      padding: 36px 36px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .data-item:last-child { border-right: 0; }
+
+    .data-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+
+    .data-item.red::before   { background: #ef4444; }
+    .data-item.amber::before { background: #f59e0b; }
+    .data-item.blue::before  { background: var(--accent); }
+
+    .data-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .data-number {
+      font-family: var(--font-head);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .data-item.red .data-number   { color: #ef4444; }
+    .data-item.amber .data-number { color: #f59e0b; }
+    .data-item.blue .data-number  { color: var(--bright); }
+
+    .data-desc {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .dr-credit {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .dr-credit strong {
+      display: block;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .cta-hint {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    .cta-hint span {
+      display: block;
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="post">
+
+    <!-- 1. LOGO + BADGE -->
+    <div class="top-bar">
+      <div class="logo-lock">
+        <img src="../assets/growxcel-logo-white.png" class="logo-mark" alt="Growxcel" />
+        <span class="logo-name">Growxcel</span>
+      </div>
+      <span class="post-type">Expert Insight</span>
+    </div>
+
+    <!-- 2. TEXT BLOCK -->
+    <div class="text-block">
+      <div class="eyebrow">F&amp;B Profitability</div>
+      <h1 class="headline">
+        Most F&amp;B businesses<br>
+        know their revenue.<br>
+        <em>Almost none know</em><br>
+        their real cost per dish.
+      </h1>
+      <p class="subline">
+        That gap is where profit disappears — in restaurants across Riyadh, Cairo, and Dubai.
+      </p>
+    </div>
+
+    <!-- 3. DATA ROW -->
+    <div class="data-row">
+      <div class="data-item red">
+        <div class="data-label">Hidden labour waste</div>
+        <div class="data-number">12–18%</div>
+        <div class="data-desc">of revenue, untracked</div>
+      </div>
+      <div class="data-item amber">
+        <div class="data-label">Portion cost variance</div>
+        <div class="data-number">8–14%</div>
+        <div class="data-desc">vs. theoretical cost</div>
+      </div>
+      <div class="data-item blue">
+        <div class="data-label">Avg. profit uplift</div>
+        <div class="data-number">+18%</div>
+        <div class="data-desc">after system fix</div>
+      </div>
+    </div>
+
+    <!-- 4. FOOTER -->
+    <div class="bottom-bar">
+      <div class="dr-credit">
+        <strong>Dr. Rabab Mostafa</strong>
+        CEO · Growxcel · 30+ years · Egypt · Saudi Arabia · UAE
+      </div>
+      <div class="cta-hint">
+        <span>Save this post</span>
+        Do you know your real cost per dish?
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
