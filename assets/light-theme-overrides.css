@@ -35,6 +35,14 @@ footer{ background: var(--brand); }
    background no longer reaches the viewport edges on wide screens,
    exposing the dark body underneath as black bars either side. */
 body{ background: #F5F8FC; }
+
+/* .footer-powered ("Powered by Wavz Studio") was styled white-on-dark
+   for the old near-black body — invisible now that body is light.
+   Re-color for the light background, same navy/muted pattern as the
+   rest of the light theme. */
+.footer-powered{ background: rgba(0,28,67,0.02); border-top-color: rgba(0,28,67,0.08); }
+.footer-powered span{ color: rgba(0,28,67,0.4); }
+.footer-powered img{ filter: invert(1); }
 .brand img{ background: transparent; }
 
 /* Status bar under header — was near-black translucent, now navy-tinted on light hero */
