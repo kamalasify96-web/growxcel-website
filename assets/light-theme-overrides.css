@@ -28,6 +28,13 @@
 /* ── Header / Footer: keep dark, but official navy instead of near-black ── */
 .site-header{ background: rgba(0,28,67,0.94); }
 footer{ background: var(--brand); }
+
+/* body's own background is still styles.css's dark default (#080808).
+   Every section used to be full-bleed so this never showed — now that
+   .page-header is capped to max-width and centered, its light
+   background no longer reaches the viewport edges on wide screens,
+   exposing the dark body underneath as black bars either side. */
+body{ background: #F5F8FC; }
 .brand img{ background: transparent; }
 
 /* Status bar under header — was near-black translucent, now navy-tinted on light hero */
