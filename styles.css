@@ -18,7 +18,7 @@
   --border-dark: rgba(255,255,255,0.09);
   --border-dim:  rgba(255,255,255,0.05);
   --border-light:rgba(0,0,0,0.09);
-  font-family: "IBM Plex Sans", "Inter", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 /* ── Reset ─────────────────────────────────────────────── */
@@ -538,6 +538,11 @@ h3 {
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 0;
+  /* Purely decorative infinite scroll — force LTR so the flex item order
+     matches the physical translateX() direction in the keyframe animation,
+     same fix as .cn-logo-marquee. translateX() never flips with RTL, but
+     flex item order does, and that mismatch left a blank gap mid-loop. */
+  direction: ltr;
 }
 
 .ticker-inner {
@@ -1312,6 +1317,8 @@ h3 {
 
 .cn-copy {
   max-width: 480px;
+  position: relative;
+  z-index: 2;
 }
 
 .cn-copy h2 {
@@ -1362,6 +1369,10 @@ h3 {
   height: 540px;
   flex-shrink: 0;
   justify-self: center;
+  /* Purely decorative — force LTR so left/top percentage positioning and
+     rotate()/translateX() math for the center badge and orbiting nodes
+     stays identical to the English layout regardless of page direction. */
+  direction: ltr;
 }
 
 .cn-orbit-center {
@@ -1436,11 +1447,89 @@ h3 {
   display: block;
 }
 
+.cn-logo-marquee {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  /* Purely decorative infinite scroll — force LTR so the flex item order
+     matches the physical translateX() direction in the keyframe animation.
+     translateX() never flips with RTL, but flex item order does, and that
+     mismatch is what left blank gaps mid-loop under dir="rtl". */
+  direction: ltr;
+}
+
+.cn-logo-marquee .cn-logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 18px;
+  animation: cn-marquee 60s linear infinite;
+}
+
+.cn-logo-marquee:hover .cn-logo-track {
+  animation-play-state: paused;
+}
+
+.cn-logo-chip {
+  flex-shrink: 0;
+  width: 128px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cn-logo-chip:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+}
+
+.cn-logo-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.25s ease;
+}
+
+.cn-logo-chip:hover img {
+  filter: grayscale(0) opacity(1);
+}
+
+@keyframes cn-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (max-width: 900px) {
   .cn-wrap {
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 60px;
+  }
+  .cn-logo-marquee {
+    margin-top: 32px;
+  }
+  .cn-logo-marquee .cn-logo-track {
+    gap: 12px;
+    animation-duration: 40s;
+  }
+  .cn-logo-chip {
+    width: 96px;
+    height: 72px;
+    border-radius: 10px;
+  }
+  .cn-logo-chip img {
+    padding: 12px;
   }
   .cn-orbit {
     width: 440px;
@@ -2376,6 +2465,40 @@ footer {
   font-weight: 600;
 }
 
+.footer-powered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border-dark);
+}
+
+.footer-powered span {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-powered a {
+  display: flex;
+  align-items: center;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.footer-powered a:hover {
+  opacity: 0.95;
+}
+
+.footer-powered img {
+  height: 13px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* ── Loading state ────────────────────────────────────────── */
 .section-reveal,
 .timeline article {
@@ -2724,7 +2847,8 @@ body.loading .hero-kicker {
 .cm-bar::after {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  inset-inline-start: 0;
+  top: 0; bottom: 0;
   width: var(--w);
   border-radius: 999px;
   background: linear-gradient(90deg, var(--brand-mid), var(--accent));
@@ -3968,16 +4092,16 @@ body.loading .hero-kicker {
 
 /* ============================================================
    DESIGN UPGRADE — Fonts · Cursor · Interactions · Polish
-   Bricolage Grotesque (display) + DM Sans (body)
+   Space Grotesk (headings) + Inter (body)
    ============================================================ */
 
 /* ── Design tokens — extend root ────────────────────────────── */
 :root {
-  --font-display:    "Bricolage Grotesque", "Space Grotesk", Arial, sans-serif;
-  --font-body:       "IBM Plex Sans", "Inter", Arial, sans-serif;
-  /* Arabic equivalents — same visual weight and character as the EN pair */
-  --font-ar-display: "Cairo", Arial, sans-serif;
-  --font-ar-body:    "IBM Plex Arabic", "Cairo", Arial, sans-serif;
+  --font-heading:    "Space Grotesk", Arial, sans-serif;
+  --font-body:       "Inter", Arial, sans-serif;
+  /* Arabic equivalents — modern, blocky/geometric character matching the EN pair */
+  --font-ar-display: "Noto Kufi Arabic", Arial, sans-serif;
+  --font-ar-body:    "Almarai", Arial, sans-serif;
   --accent-bright:  #7ab0f5;
   --accent-glow:    rgba(74,127,212,0.10);
   --accent-border:  rgba(74,127,212,0.28);
@@ -3993,10 +4117,12 @@ body.loading .hero-kicker {
   text-align: right;
 }
 
-[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3,
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4,
 [lang="ar"] .hero-title, [lang="ar"] .hero-word,
-[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
-  font-family: var(--font-ar-display);
+[lang="ar"] .proof-pill strong, [lang="ar"] .stat-num,
+[lang="ar"] .pmv, [lang="ar"] .bp-hub, [lang="ar"] .imr-big,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 {
+  font-family: var(--font-ar-display) !important;
   font-weight: 800;
 }
 
@@ -4013,6 +4139,30 @@ nav, p, li, label, input, select, textarea,
   font-family: var(--font-body);
 }
 
+/* Arabic pages — the above list targets specific elements, which otherwise
+   beats plain inheritance from the [lang="ar"]/[dir="rtl"] rule above.
+   Re-assert the Arabic body font here so nav/labels/lists etc. don't
+   silently fall through to Inter (no Arabic glyph support = broken shaping). */
+[dir="rtl"] body,
+[dir="rtl"] nav, [dir="rtl"] p, [dir="rtl"] li, [dir="rtl"] span, [dir="rtl"] a,
+[dir="rtl"] label, [dir="rtl"] input, [dir="rtl"] select, [dir="rtl"] textarea, [dir="rtl"] button {
+  font-family: var(--font-ar-body) !important;
+}
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4,
+[dir="rtl"] .hero-title, [dir="rtl"] .hero-word,
+[dir="rtl"] .proof-pill strong, [dir="rtl"] .stat-num,
+[dir="rtl"] .pmv, [dir="rtl"] .bp-hub, [dir="rtl"] .imr-big {
+  font-family: var(--font-ar-display) !important;
+}
+
+/* Letter-spacing/uppercase tracking is a Latin-only convention (used all over
+   this site for nav, buttons, badges, eyebrows). Applied to Arabic script it
+   pushes joined letter clusters apart and reads as broken/disconnected text. */
+[dir="rtl"] * {
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
 h1, h2, h3, h4,
 .hero-title, .hero-word,
 .proof-pill strong,
@@ -4024,7 +4174,7 @@ h1, h2, h3, h4,
 .founder-copy h2, .contact-left h2,
 .pmv, .bp-hub, .section-copy h2,
 .imr-big {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
 }
 
 /* ── Typography fine-tuning ──────────────────────────────────── */
@@ -4320,6 +4470,10 @@ nav a:hover::after { transform: scaleX(1); }
 @media (pointer: fine) {
   html, body, *, *::before, *::after {
     cursor: none !important;
+  }
+  /* Small inline text links — the logo ring fully covers them, so keep a real pointer cursor here */
+  .footer-copy a, .pf-privacy a, .proof-note a, .visual-disclaimer a {
+    cursor: pointer !important;
   }
 }
 
@@ -4833,19 +4987,7 @@ body.cursor-clicking .cursor-ring {
    SKILL-DRIVEN UPGRADE PASS 2 — Typography · Comparison · Nav · A11y
    ============================================================ */
 
-/* ── 3-tier font hierarchy (skill: Space Grotesk for enterprise SaaS h2/h3) ── */
-:root {
-  --font-display:  "Bricolage Grotesque", Arial, sans-serif; /* hero/display */
-  --font-heading:  "Space Grotesk", Arial, sans-serif;       /* h2, h3, section headings */
-  --font-body:     "IBM Plex Sans", "Inter", Arial, sans-serif; /* body, labels, data */
-}
-
-/* Display moments — Bricolage for brand statements only */
-.system-statement h2,
-.proof-pill strong,
-.imr-big {
-  font-family: var(--font-display) !important;
-}
+/* ── Two-font hierarchy: Space Grotesk (headings) + Inter (body) ── */
 
 /* All headings including hero — Space Grotesk: consistent, structured, enterprise */
 h1, h2, h3,
@@ -4858,11 +5000,14 @@ h1, h2, h3,
 .founder-copy h2,
 .contact-left h2,
 .testi-header h2,
-.compare-header h2 {
+.compare-header h2,
+.system-statement h2,
+.proof-pill strong,
+.imr-big {
   font-family: var(--font-heading) !important;
 }
 
-/* Body / data — IBM Plex Sans */
+/* Body / data — Inter */
 body, p, li, span, label,
 input, select, textarea, button,
 nav, .eyebrow,
@@ -5029,7 +5174,7 @@ nav a {
 
 .ct-badge {
   display: inline-block;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -5232,7 +5377,7 @@ nav a {
 }
 
 .testi-quote-mark {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: 4rem;
   line-height: 0.6;
   color: var(--accent);
@@ -5265,7 +5410,7 @@ nav a {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--brand), var(--accent));
   color: white;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 800;
   font-size: 0.9rem;
   display: flex;
@@ -5297,7 +5442,7 @@ nav a {
 }
 
 .testi-metric {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -5408,12 +5553,12 @@ nav a {
   padding-top: clamp(32px, 4vw, 52px) !important;
 }
 
-/* ── Hero headline — Bricolage Grotesque 800 ── */
+/* ── Hero headline — Space Grotesk 700 ── */
 .hero-title,
 .hero-title .hero-word,
 .hero-title .hero-line span {
-  font-family: "Bricolage Grotesque", Arial, sans-serif !important;
-  font-weight: 800 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
 }
 
 .hero-title {
@@ -5429,12 +5574,12 @@ nav a {
 }
 
 .hero-line-pre .hero-word {
-  font-family: "Bricolage Grotesque", Arial, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: clamp(2rem, 5vw, 4rem) !important;
   letter-spacing: -0.03em !important;
   text-transform: none !important;
   opacity: 1 !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   color: var(--white) !important;
 }
 
@@ -5509,7 +5654,7 @@ nav a {
   font-size: clamp(1rem, 1.6vw, 1.3rem);
   font-weight: 800;
   color: #fff;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   line-height: 1;
 }
 
@@ -5616,7 +5761,7 @@ nav a {
 .ci-icon {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-inline-end: 5px;
   margin-bottom: 1px;
   opacity: 0.6;
 }
@@ -5691,7 +5836,7 @@ nav a {
 .ksa-proof-grid strong {
   display: block;
   color: var(--brand);
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 0.95;
 }
@@ -5754,7 +5899,7 @@ nav a {
 .lifecycle-step--final { background: var(--brand); }
 
 .lc-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.lc-num { color: var(--accent); font-family: var(--font-display); font-size: 0.74rem; font-weight: 800; }
+.lc-num { color: var(--accent); font-family: var(--font-heading); font-size: 0.74rem; font-weight: 800; }
 .lc-phase { color: var(--text-muted); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .lifecycle-step--final .lc-num { color: var(--yellow); }
 .lifecycle-step--final .lc-phase { color: rgba(255,255,255,0.5); }
@@ -5911,4 +6056,194 @@ nav a {
   .method-assurance { grid-template-columns: 1fr; }
   .method-assurance span { border-right: 0; border-bottom: 1px solid var(--border-light); }
   .method-assurance span:last-child { border-bottom: 0; }
+}
+
+/* ── Arabic RTL: final letter-spacing/uppercase reset ──────────────
+   Placed last so it beats every other !important tracking rule in
+   this file (buttons, badges, labels, hero headline, stat labels,
+   etc.) that was designed for Latin uppercase text. Arabic script
+   must never receive artificial letter-spacing. ─────────────────── */
+html[dir="rtl"] *,
+html[lang="ar"][dir="rtl"] * {
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* ── Arabic RTL: final font-family fix ──────────────────────────────
+   Placed absolute last, with boosted specificity (html + two attribute
+   selectors), so it beats every other same-specificity !important rule
+   in this file — including nested selectors like ".hero-title .hero-word"
+   that were forcing the Latin heading font (no Arabic glyphs) back onto
+   the actual visible text inside headings. ─────────────────────────── */
+html[lang="ar"][dir="rtl"] h1,
+html[lang="ar"][dir="rtl"] h2,
+html[lang="ar"][dir="rtl"] h3,
+html[lang="ar"][dir="rtl"] h4,
+html[lang="ar"][dir="rtl"] .hero-title,
+html[lang="ar"][dir="rtl"] .hero-title .hero-word,
+html[lang="ar"][dir="rtl"] .hero-title .hero-line span,
+html[lang="ar"][dir="rtl"] .hero-word,
+html[lang="ar"][dir="rtl"] .hero-line-pre .hero-word,
+html[lang="ar"][dir="rtl"] .proof-pill strong,
+html[lang="ar"][dir="rtl"] .stat-num,
+html[lang="ar"][dir="rtl"] .pmv,
+html[lang="ar"][dir="rtl"] .bp-hub,
+html[lang="ar"][dir="rtl"] .imr-big {
+  font-family: var(--font-ar-display) !important;
+}
+
+html[lang="ar"][dir="rtl"] body,
+html[lang="ar"][dir="rtl"] nav,
+html[lang="ar"][dir="rtl"] p,
+html[lang="ar"][dir="rtl"] li,
+html[lang="ar"][dir="rtl"] span,
+html[lang="ar"][dir="rtl"] a,
+html[lang="ar"][dir="rtl"] label,
+html[lang="ar"][dir="rtl"] input,
+html[lang="ar"][dir="rtl"] select,
+html[lang="ar"][dir="rtl"] textarea,
+html[lang="ar"][dir="rtl"] button {
+  font-family: var(--font-ar-body) !important;
+}
+
+/* ── Arabic RTL: hero line-height fix ────────────────────────────────
+   .hero-line uses overflow:hidden as a slide-reveal mask, sized to the
+   Latin hero font's tight line-height (1.05). Noto Kufi Arabic has
+   taller diacritic dots/ascenders that don't fit that box and were
+   getting clipped top and bottom. Give Arabic hero text more vertical
+   room so nothing is cropped. ───────────────────────────────────────── */
+html[lang="ar"][dir="rtl"] .hero-title {
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem) !important;
+  line-height: 1.22 !important;
+}
+html[lang="ar"][dir="rtl"] .hero-line-pre .hero-word {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem) !important;
+  line-height: 1.22 !important;
+}
+html[lang="ar"][dir="rtl"] .hero-line {
+  margin-block: 0.06em;
+  padding-bottom: 0.18em;
+}
+
+/* ── Arabic RTL: floating metric badges clear of card text ───────────
+   .hfb-1/.hfb-2 float partly inside the product-shell card by design.
+   In RTL the card's internal text (topbar tag, row headings) mirrors
+   to the opposite side and lands directly under the badges. Push both
+   badges fully outside the card instead of partially over it so they
+   never sit on top of text. ─────────────────────────────────────────── */
+html[lang="ar"][dir="rtl"] .hfb-1 {
+  top: -64px !important;
+  left: -10px !important;
+}
+html[lang="ar"][dir="rtl"] .hfb-2 {
+  bottom: -64px !important;
+  right: -10px !important;
+}
+
+/* ── Arabic RTL: heading line-height, site-wide ───────────────────────
+   Same root cause as the hero-title fix above: every heading in this
+   file is tuned to a tight Latin line-height (h2 is line-height:1, h1
+   has no override at all). Noto Kufi Arabic's diacritic dots/ascenders
+   don't fit that box, so any heading that wraps to 2+ lines (section
+   titles, card headings, page headers) gets lines crowding or touching
+   each other. Applies to every h1-h4 in Arabic, not just the hero. ── */
+html[lang="ar"][dir="rtl"] h1,
+html[lang="ar"][dir="rtl"] h2,
+html[lang="ar"][dir="rtl"] h3,
+html[lang="ar"][dir="rtl"] h4 {
+  line-height: 1.38 !important;
+}
+
+/* ── Arabic RTL: blueprint diagram arrows point into the hub ─────────
+   .sv-blueprint-new is a flex row (nodes, lines, hub in DOM order). In
+   RTL the row visually reverses, putting the hub ("المعادلة") on the
+   left instead of the right — but .bp-line::after's arrowhead is
+   pinned with a physical `right: 0`, so it stayed on the nodes' side
+   and now points away from the hub instead of into it. Move the
+   arrowhead to the hub-adjacent end and mirror its chevron shape, and
+   flip the line's brightness gradient to still intensify toward the
+   hub. ────────────────────────────────────────────────────────────── */
+html[lang="ar"][dir="rtl"] .bp-line {
+  background: linear-gradient(90deg, var(--accent), rgba(8,47,115,0.3)) !important;
+}
+html[lang="ar"][dir="rtl"] .bp-line::after {
+  right: auto !important;
+  left: 0 !important;
+  border-right: none !important;
+  border-top: 1.5px solid var(--accent) !important;
+  border-left: 1.5px solid var(--accent) !important;
+  transform: translateY(-50%) rotate(-45deg) !important;
+}
+
+/* ── Arabic RTL: footer "Powered by" stays left-to-right ──────────────
+   The logo credit reads as an English lockup ("Powered by [logo]") even
+   on Arabic pages, so keep it LTR — otherwise RTL flex-reverses the row
+   and the logo ends up before the text instead of after it. */
+html[lang="ar"][dir="rtl"] .footer-powered {
+  direction: ltr;
+}
+
+/* ── Arabic RTL: strategic-costing bar chart no longer clips ──────────
+   .sv-waterfall IS the .service-visual box, fixed at 90px with
+   overflow:hidden. Its EN row labels ("Revenue", "COGS", "Overhead",
+   "Margin") are single short words that fit .sv-label's 46px column on
+   one line. The Arabic translations ("تكلفة البضاعة",
+   "المصروفات العامة") are longer phrases that wrap to 2 lines there,
+   pushing the 4-row chart past 90px tall — the bottom row ("الهامش")
+   was getting clipped. Widen the label column so fewer labels wrap,
+   and let the box grow to fit whatever still does. ───────────────── */
+html[lang="ar"][dir="rtl"] .sv-waterfall {
+  height: auto !important;
+  min-height: 90px;
+}
+html[lang="ar"][dir="rtl"] .sv-waterfall .sv-label {
+  width: 68px;
+}
+
+/* ── Arabic RTL: before/after arrow points the right way ──────────────
+   .ba2-arrow-svg's desktop rotate(-90deg) turns the down-arrow to point
+   right, matching the "قبل" (before) card DOM-first / "بعد" (after)
+   card DOM-last order under LTR (before on the left, after on the
+   right, arrow pointing right). RTL grid-reverses that row — before
+   ends up on the right, after on the left — but the rotation is a
+   physical value that never flipped with it, so the arrow kept
+   pointing right, away from "بعد" instead of into it. */
+@media (min-width: 901px) {
+  html[lang="ar"][dir="rtl"] .ba2-arrow-svg {
+    transform: rotate(90deg);
+  }
+}
+
+/* ── Arabic RTL: phone numbers keep LTR digit order ───────────────────
+   "+966 501 240 393" etc. are plain text sitting inside an RTL
+   paragraph. Without an explicit direction, the browser's bidi
+   algorithm treats the space-separated groups as part of the
+   surrounding RTL run and reorders them (groups AND the leading "+"
+   end up read right-to-left), even though the digits within each
+   group are untouched. Phone numbers are always written left-to-right
+   regardless of page language, so force it. */
+html[lang="ar"][dir="rtl"] .ct-phone {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* ── Arabic RTL: case-study carousel arrows swap sides ─────────────────
+   #csPrev/#csNext are pinned with physical left/right offsets, matching
+   LTR (prev on the left pointing back, next on the right pointing
+   forward). Under RTL the track now advances the opposite physical
+   direction (see initCsCarousel in script.js), so the buttons need to
+   swap sides too — next on the left, prev on the right — with their
+   chevrons mirrored to keep pointing the way the content actually
+   moves. */
+html[lang="ar"][dir="rtl"] #csPrev.cs-side-btn {
+  left: auto !important;
+  right: -22px !important;
+}
+html[lang="ar"][dir="rtl"] #csNext.cs-side-btn {
+  right: auto !important;
+  left: -22px !important;
+}
+html[lang="ar"][dir="rtl"] #csPrev.cs-side-btn svg,
+html[lang="ar"][dir="rtl"] #csNext.cs-side-btn svg {
+  transform: scaleX(-1);
 }

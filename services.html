@@ -14,9 +14,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=methodology-2" />
-    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=methodology-33" />
+    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-4" />
   </head>
   <body>
     <img id="hlb-ring-1" src="assets/growxcel-logo-white.png" alt="" aria-hidden="true" />
@@ -42,8 +42,8 @@
         <button class="ham-btn" id="ham-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
           <span></span><span></span><span></span>
         </button>
-        <span class="lang-toggle lang-disabled" aria-disabled="true" title="Arabic version follows English approval">AR</span>
-        <a class="header-cta" href="contact.html">Book Audit</a>
+        <a class="lang-toggle" href="ar/services.html" title="النسخة العربية">AR</a>
+        <a class="header-cta" href="contact.html">Book a Consultation</a>
       </div>
     </header>
     <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
@@ -53,17 +53,26 @@
       <a href="about.html">About</a>
       <a href="saudi-arabia.html">Saudi Arabia</a>
       <a href="contact.html">Contact</a>
-      <span class="mobile-lang-disabled" aria-disabled="true">AR — عربي · Coming after English approval</span>
-      <a href="contact.html" class="mob-cta">Book a Free Audit</a>
+      <a href="ar/services.html" class="mobile-lang-disabled">AR — عربي</a>
+      <a href="contact.html" class="mob-cta">Book a Free Consultation</a>
     </div>
 
     <main id="main">
 
       <!-- PAGE HEADER -->
       <section class="page-header section-reveal">
-        <p class="eyebrow">Six ways we fix the gap</p>
-        <h1>System-level<br>cost management.</h1>
-        <p class="hero-text">Six integrated service lines targeting every point where money slips through — from pricing and purchasing to ERP and performance reporting. Built on-site, inside your actual business.</p>
+        <div class="page-header-copy">
+          <p class="eyebrow">Six ways we fix the gap</p>
+          <h1>System-level<br>cost management.</h1>
+          <p class="hero-text">Six integrated service lines targeting every point where money slips through — from pricing and purchasing to ERP and performance reporting. Built on-site, inside your actual business.</p>
+        </div>
+        <div class="page-header-image">
+          <picture>
+            <source srcset="assets/cs/services-cover.avif" type="image/avif" />
+            <source srcset="assets/cs/services-cover.webp" type="image/webp" />
+            <img src="assets/cs/services-cover.webp" alt="Cost management planning desk" loading="eager" decoding="async" width="960" height="1280" />
+          </picture>
+        </div>
       </section>
 
       <!-- SERVICE GRID — reuses existing component exactly -->
@@ -228,9 +237,9 @@
           </article>
           <article class="lifecycle-step">
             <div class="lc-top"><span class="lc-num">05</span><span class="lc-phase">Connect</span></div>
-            <div class="lc-erp"><span>SAP</span><span>Oracle</span><b>ERP</b><span>Odoo</span><span>D365</span></div>
+            <div class="lc-erp"><span>SAP</span><span>Oracle</span><b>ERP</b><span>Odoo</span><span>Microsoft</span></div>
             <h3>ERP Integration</h3>
-            <p>Connect the approved model to SAP, Oracle, Odoo, or Dynamics 365 workflows, data, and reporting.</p>
+            <p>Connect the approved model to SAP, Oracle, Odoo, or Microsoft workflows, data, and reporting.</p>
             <div class="lc-output"><span>Output</span><strong>One reliable data flow</strong></div>
           </article>
           <article class="lifecycle-step lifecycle-step--final">
@@ -279,7 +288,7 @@
                 <td class="ct-other"><span class="ct-partial">Sometimes</span></td>
               </tr>
               <tr>
-                <td>ERP implementation support (SAP / Oracle)</td>
+                <td>ERP implementation support (SAP / Oracle / Odoo / Microsoft)</td>
                 <td class="ct-growxcel"><span class="ct-yes"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></td>
                 <td class="ct-other"><span class="ct-no"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span></td>
                 <td class="ct-other"><span class="ct-partial">Limited</span></td>
@@ -303,7 +312,7 @@
                 <td class="ct-other"><span class="ct-no"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span></td>
               </tr>
               <tr>
-                <td>Egypt, Saudi Arabia &amp; UAE local presence</td>
+                <td>Egypt &amp; Saudi Arabia local presence</td>
                 <td class="ct-growxcel"><span class="ct-yes"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span></td>
                 <td class="ct-other"><span class="ct-partial">Egypt only</span></td>
                 <td class="ct-other"><span class="ct-no"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span></td>
@@ -319,7 +328,7 @@
         </div>
 
         <div class="compare-cta">
-          <a class="button primary" href="contact.html">Book a Free Cost Audit</a>
+          <a class="button primary" href="contact.html">Book a Free Consultation</a>
           <p>See exactly where your margin is going — in one session.</p>
         </div>
       </section>
@@ -330,7 +339,7 @@
         <div class="contact-left">
           <p class="eyebrow">Start the formula</p>
           <h2>Ready to know exactly where your profit is going?</h2>
-          <p>Book a cost audit and we'll map the gap between your revenue and your margin — showing you which of the six service lines applies to your business first.</p>
+          <p>Book a consultation and we'll map the gap between your revenue and your margin — showing you which of the six service lines applies to your business first.</p>
           <div class="contact-info-block">
             <div class="contact-info-row">
               <span class="ci-label"><svg class="ci-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</span>
@@ -390,7 +399,7 @@
             </div>
             <div class="pf-step" data-step="4">
               <p class="pf-label">Almost there</p>
-              <h3 class="pf-question">Where should we send your audit plan?</h3>
+              <h3 class="pf-question">Where should we send your consultation plan?</h3>
               <p class="pf-hint">Your answers help us prepare a focused diagnostic rather than a generic brochure.</p>
               <div class="pf-fields">
                 <div class="cf-field">
@@ -444,9 +453,16 @@
       <span class="footer-copy">© 2026 Growxcel. All rights reserved. <a href="privacy.html">Privacy</a></span>
     </footer>
 
+    <div class="footer-powered">
+      <span>Powered by</span>
+      <a href="https://www.wavzstudio.com" target="_blank" rel="noopener noreferrer" aria-label="Wavz Studio">
+        <img src="assets/wavzstudio-logo.png" alt="Wavz Studio">
+      </a>
+    </div>
+
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/vendor/lenis.min.js"></script>
-    <script src="script.js?v=methodology-1"></script>
+    <script src="script.js?v=methodology-3"></script>
   </body>
 </html>

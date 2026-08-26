@@ -1,706 +1,143 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Growxcel designs strategic cost management, ERP, purchasing, inventory, reporting, and profitability systems for companies across Saudi Arabia, Egypt, and the Middle East." />
-    <title>Growxcel | Profit Intelligence Systems</title>
-    <link rel="canonical" href="https://growxcel.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Growxcel | Profit Intelligence Systems" />
-    <meta property="og:description" content="Strategic cost management and profitability systems built inside your business." />
-    <meta property="og:url" content="https://growxcel.com/" />
-    <meta property="og:image" content="https://growxcel.com/assets/profile-message.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!--
-      3-tier font hierarchy:
-      EN display:  Bricolage Grotesque — hero headlines (editorial punch)
-      EN heading:  Space Grotesk      — section h2/h3 (enterprise SaaS, structured)
-      EN body:     IBM Plex Sans      — body/labels/data (finance-grade trustworthiness)
-      AR display:  Cairo              — Arabic hero/headlines (geometric, heavy, modern)
-      AR body:     IBM Plex Arabic    — Arabic body text (matches IBM Plex Sans exactly)
-    -->
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=methodology-2" />
-    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-2" />
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Organization","name":"Growxcel","url":"https://growxcel.com/","logo":"https://growxcel.com/assets/growxcel-logo-white.png","email":"info@growxcel.com","founder":{"@type":"Person","name":"Dr. Rabab Mostafa"},"areaServed":["Egypt","Saudi Arabia","United Arab Emirates"]}
-    </script>
-  </head>
-  <body>
-    <!-- Global logo watermark — fixed behind every section, JS animates per section -->
-    <img id="hlb-ring-1" src="assets/growxcel-logo-white.png" alt="" aria-hidden="true" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Growxcel shows growing businesses where profit disappears, fixes the operating system behind it, and gives teams control.">
+  <title>Growxcel | See Where Your Profit Goes</title>
+  <link rel="canonical" href="https://growxcel.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/clean.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Growxcel home"><img src="assets/growxcel-logo-white.png" alt=""><span>GROWXCEL</span></a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="active" href="index.html">Home</a><a href="services.html">Services</a><a href="success-stories.html">Success Stories</a><a href="saudi-arabia.html">Saudi Arabia</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <a class="header-cta" href="contact.html">Book a Consultation</a>
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </header>
 
-
-    <!-- Skip link — accessibility (skill: allow keyboard users to skip nav) -->
-    <a class="skip-link" href="#top">Skip to main content</a>
-
-    <!-- Custom cursor — hidden on touch devices via CSS -->
-    <div class="cursor-dot"  id="cursor-dot"  aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
-
-    <canvas id="signal-canvas" aria-hidden="true"></canvas>
-
-    <!-- NAV -->
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Growxcel home">
-        <img src="assets/growxcel-logo-white.png" alt="Growxcel logo" />
-        <strong>GROWXCEL</strong>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="index.html" class="active">Home</a>
-        <a href="services.html">Services</a>
-        <a href="success-stories.html">Success Stories</a>
-        <a href="about.html">About</a>
-        <a href="saudi-arabia.html">Saudi Arabia</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-right">
-        <button class="ham-btn" id="ham-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <span></span><span></span><span></span>
-        </button>
-        <span class="lang-toggle lang-disabled" aria-disabled="true" title="Arabic version follows English approval">AR</span>
-        <a class="header-cta" href="#contact">Book Audit</a>
-      </div>
-    </header>
-    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html">Services</a>
-      <a href="success-stories.html">Success Stories</a>
-      <a href="about.html">About</a>
-      <a href="saudi-arabia.html">Saudi Arabia</a>
-      <a href="contact.html">Contact</a>
-      <span class="mobile-lang-disabled" aria-disabled="true">AR — عربي · Coming after English approval</span>
-      <a href="#contact" class="mob-cta">Book a Free Audit</a>
-    </div>
-
-    <main id="top">
-
-      <!-- HERO -->
-      <section class="hero section-reveal" data-theme="dark">
-
-        <!-- Hero-local logo — absolute, fades out as hero exits -->
-        <div class="hero-logo-bg" aria-hidden="true">
-          <img id="hlb-ring-hero" src="assets/growxcel-logo-white.png" alt="" />
+  <main id="main">
+    <section class="approved-hero">
+      <div class="data-grid" aria-hidden="true"></div>
+      <div class="approved-hero-mark" aria-hidden="true"><img src="assets/growxcel-logo-white.png" alt=""></div>
+      <div class="approved-command" aria-label="Growxcel operating status"><span class="live-dot">System active</span><span>Egypt · Saudi Arabia · UAE</span><span>60+ clients served</span><span>6 sectors</span><b>Profit Intelligence Systems™</b></div>
+      <div class="approved-hero-grid">
+        <div class="approved-copy hero-copy">
+          <p class="eyebrow">For business owners who deserve better numbers</p>
+          <h1><small>Our</small><span>Formula</span>Delivers<br>Success.</h1>
+          <p>Your revenue tells one story. Your bank account tells another. Growxcel closes that gap with cost visibility, pricing control, ERP-ready reporting, and profit decisions your team can act on.</p>
+          <div class="button-row"><a class="button button--primary" href="contact.html">Start the formula <span class="button-arrow">→</span></a><a class="button button--secondary" href="#system">See how it works</a></div>
+          <div class="hero-trust"><span>Trusted by 60+ businesses</span><span>On-site implementation</span></div>
         </div>
-
-        <!-- Bottom blend — merges hero into next section -->
-        <div class="hero-bottom-blend" aria-hidden="true"></div>
-
-        <!-- Animated finance trend line — draws on load -->
-        <svg class="hero-trendline" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="trend-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="rgba(74,127,212,0)" />
-              <stop offset="30%"  stop-color="rgba(74,127,212,0.5)" />
-              <stop offset="70%"  stop-color="rgba(111,163,239,0.6)" />
-              <stop offset="100%" stop-color="rgba(74,127,212,0)" />
-            </linearGradient>
-            <linearGradient id="area-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%"   stop-color="rgba(74,127,212,0.08)" />
-              <stop offset="100%" stop-color="rgba(74,127,212,0)" />
-            </linearGradient>
-          </defs>
-          <path class="trend-area" d="M0,210 C120,205 240,195 360,175 C480,155 540,160 660,135 C780,110 840,118 960,90 C1080,62 1200,45 1320,22 C1380,12 1420,6 1440,2 L1440,220 L0,220 Z" fill="url(#area-grad)" />
-          <path class="trend-line" id="trend-path" d="M0,210 C120,205 240,195 360,175 C480,155 540,160 660,135 C780,110 840,118 960,90 C1080,62 1200,45 1320,22 C1380,12 1420,6 1440,2" fill="none" stroke="url(#trend-grad)" stroke-width="1.5" />
-          <circle class="trend-dot" cx="1440" cy="2" r="4" fill="rgba(111,163,239,0.9)" />
-          <circle class="trend-dot-ring" cx="1440" cy="2" r="8" fill="none" stroke="rgba(74,127,212,0.4)" stroke-width="1" />
-        </svg>
-
-        <!-- Command bar — Bloomberg-style status strip (skill: Enterprise Gateway, trust signals prominent) -->
-        <div class="hero-command-bar" aria-label="System status">
-          <div class="hcb-inner">
-            <span class="hcb-live">
-              <span class="hcb-dot" aria-hidden="true"></span>
-              <span>System Active</span>
-            </span>
-            <span class="hcb-div" aria-hidden="true"></span>
-            <span class="hcb-item">Egypt · Saudi Arabia · UAE</span>
-            <span class="hcb-div" aria-hidden="true"></span>
-            <span class="hcb-item">60+ Clients Served</span>
-            <span class="hcb-div" aria-hidden="true"></span>
-            <span class="hcb-item">6 Sectors</span>
-            <span class="hcb-right">Profit Intelligence Systems™</span>
+        <div class="approved-product" aria-label="Growxcel Profit Operating System dashboard">
+          <div class="product-glow" aria-hidden="true"></div>
+          <div class="result-badge result-badge--top" aria-hidden="true"><b>↗</b><div><strong>+22%</strong><span>Margin visibility</span></div></div>
+          <div class="result-badge result-badge--bottom" aria-hidden="true"><b>↗</b><div><strong>+14%</strong><span>Gross margin</span></div></div>
+          <div class="product-shell">
+            <div class="product-topbar"><span>Growxcel POS</span><b>Profit Operating System™</b></div>
+            <div class="product-row"><div><small>Formula layer 01</small><strong>Find leaks</strong><span>Cost visibility by branch and product</span></div><i style="--fill:72%"></i></div>
+            <div class="product-row"><div><small>Formula layer 02</small><strong>Use ERP</strong><span>SAP &amp; Oracle data made practical</span></div><i style="--fill:88%"></i></div>
+            <div class="product-row"><div><small>Formula layer 03</small><strong>Decide fast</strong><span>Reports that trigger action</span></div><i style="--fill:64%"></i></div>
+            <div class="product-row"><div><small>Formula layer 04</small><strong>Control spend</strong><span>Department and branch accountability</span></div><i style="--fill:55%"></i></div>
+            <div class="product-foot"><span>System active</span><i></i><span>4 layers running</span></div>
           </div>
-        </div>
-
-        <div class="hero-grid">
-          <div class="hero-copy">
-
-            <!-- Editorial headline — "Our" is small/dim prefix, then MASSIVE words -->
-            <p class="eyebrow hero-eyebrow">Profit intelligence systems for growing businesses</p>
-            <h1 class="hero-title">
-              <span class="hero-line hero-line-pre"><span class="hero-word">Our</span></span>
-              <span class="hero-line"><span class="hero-word accent">Formula</span></span>
-              <span class="hero-line"><span class="hero-word">Delivers</span></span>
-              <span class="hero-line"><span class="hero-word">Success.</span></span>
-            </h1>
-
-            <div class="hero-sub">
-              <p class="hero-text">Your revenue tells one story. Your bank account tells another. Growxcel closes that gap with cost visibility, pricing control, ERP-ready reporting, and profit decisions your team can act on.</p>
-              <div class="hero-actions">
-                <a class="button primary" href="#contact">Start the formula</a>
-                <a class="button ghost" href="#system">See how it works</a>
-              </div>
-              <!-- Trust proof line — skill: Trust & Authority, credentials/metrics prominent -->
-              <div class="hero-trust-row">
-                <svg class="hero-trust-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <span>Trusted by 60+ businesses across F&amp;B, industrial, medical &amp; trading</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- RIGHT: Product panel + floating result badges -->
-          <div class="hero-product" aria-label="Growxcel operating dashboard">
-
-            <!-- Floating metric badges — skill: metric pulse animations, badge hover effects -->
-            <div class="hero-float-badge hfb-1" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-              <div>
-                <strong>+22%</strong>
-                <span>Margin visibility</span>
-              </div>
-            </div>
-            <div class="hero-float-badge hfb-2" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-              <div>
-                <strong>+14%</strong>
-                <span>Gross margin</span>
-              </div>
-            </div>
-
-            <!-- Radial glow behind panel -->
-            <div class="product-glow-ring" aria-hidden="true"></div>
-
-            <div class="product-shell">
-              <div class="product-scan-line" aria-hidden="true"></div>
-              <div class="product-topbar">
-                <span class="ptb-label">GROWXCEL PROFIT OS</span>
-                <b class="ptb-tag">Profit Operating System™</b>
-              </div>
-              <div class="product-metrics">
-                <div class="pm-row">
-                  <div>
-                    <span class="pml">Formula layer 01</span>
-                    <span class="pmv">Find leaks</span>
-                    <span class="pms">cost visibility by branch and product</span>
-                  </div>
-                  <div class="pm-bar"><div class="pm-fill" style="width:72%"></div></div>
-                </div>
-                <div class="pm-row">
-                  <div>
-                    <span class="pml">Formula layer 02</span>
-                    <span class="pmv">Use ERP</span>
-                    <span class="pms">SAP & Oracle data made practical</span>
-                  </div>
-                  <div class="pm-bar"><div class="pm-fill" style="width:88%"></div></div>
-                </div>
-                <div class="pm-row">
-                  <div>
-                    <span class="pml">Formula layer 03</span>
-                    <span class="pmv">Decide fast</span>
-                    <span class="pms">reports that trigger action</span>
-                  </div>
-                  <div class="pm-bar"><div class="pm-fill" style="width:64%"></div></div>
-                </div>
-                <div class="pm-row">
-                  <div>
-                    <span class="pml">Formula layer 04</span>
-                    <span class="pmv">Control spend</span>
-                    <span class="pms">department and branch accountability</span>
-                  </div>
-                  <div class="pm-bar"><div class="pm-fill" style="width:55%"></div></div>
-                </div>
-              </div>
-              <div class="product-footer">
-                <span>System Active</span>
-                <span class="pf-dot"></span>
-                <span>4 Layers Running</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats strip — counters animate on scroll -->
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-num-wrap">
-              <span class="stat-num" data-final="30">30</span>
-              <span class="stat-sup">+</span>
-            </div>
-            <p>Years experience</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num-wrap">
-              <span class="stat-num" data-final="6">6</span>
-            </div>
-            <p>Sectors served</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num-wrap">
-              <span class="stat-num" data-final="3">3</span>
-            </div>
-            <p>Countries</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num-wrap">
-              <span class="stat-num" data-final="60">60</span>
-              <span class="stat-sup">+</span>
-            </div>
-            <p>Clients</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- TICKER — pain-point language -->
-      <div class="ticker-strip" aria-hidden="true">
-        <div class="ticker-inner">
-          <span>Revenue Up, Profits Down</span>
-          <span>Reports Nobody Uses</span>
-          <span>ERP Not Delivering</span>
-          <span>Hidden Cost Leaks</span>
-          <span>Branch Margins Unknown</span>
-          <span>Decisions Made on Guesswork</span>
-          <span>Stock Shrinking, No One Knows Why</span>
-          <span>Busy Teams, Shrinking Margin</span>
-          <!-- duplicate for seamless loop -->
-          <span>Revenue Up, Profits Down</span>
-          <span>Reports Nobody Uses</span>
-          <span>ERP Not Delivering</span>
-          <span>Hidden Cost Leaks</span>
-          <span>Branch Margins Unknown</span>
-          <span>Decisions Made on Guesswork</span>
-          <span>Stock Shrinking, No One Knows Why</span>
-          <span>Busy Teams, Shrinking Margin</span>
         </div>
       </div>
+      <div class="approved-stats"><div><strong>30+</strong><span>Years experience</span></div><div><strong>6</strong><span>Sectors served</span></div><div><strong>3</strong><span>Countries</span></div><div><strong>60+</strong><span>Clients</span></div></div>
+    </section>
 
-      <!-- PROOF BAND — pain → solution -->
-      <section class="proof-band section-reveal">
-        <div class="proof-pill">
-          <span class="proof-num">01</span>
-          <svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          <strong>Costs</strong>
-          <p>Mapped and controlled</p>
-        </div>
-        <div class="proof-pill">
-          <span class="proof-num">02</span>
-          <svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-          <strong>Reports</strong>
-          <p>That drive decisions</p>
-        </div>
-        <div class="proof-pill">
-          <span class="proof-num">03</span>
-          <svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-          <strong>ERP</strong>
-          <p>Actually working for you</p>
-        </div>
-        <div class="proof-pill">
-          <span class="proof-num">04</span>
-          <svg class="pill-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <strong>Teams</strong>
-          <p>Trained and accountable</p>
-        </div>
-      </section>
+    <div class="pain-ticker" aria-hidden="true"><div><span>Revenue up, profits down</span><span>Reports nobody uses</span><span>ERP not delivering</span><span>Hidden cost leaks</span><span>Branch margins unknown</span><span>Decisions made on guesswork</span><span>Revenue up, profits down</span><span>Reports nobody uses</span><span>ERP not delivering</span><span>Hidden cost leaks</span></div></div>
 
-      <!-- INSTITUTIONAL IMPACT -->
-      <section class="outcomes-section section-reveal" aria-labelledby="outcomes-title">
-        <div class="section-copy narrow">
-          <p class="eyebrow">Documented institutional impact</p>
-          <h2 id="outcomes-title">The system is built to move four numbers.</h2>
-          <p>Across completed engagements, Growxcel's operating systems have delivered measurable improvements in cost, waste, productivity, and margin.</p>
-        </div>
-        <div class="outcome-grid">
-          <article><strong>40%</strong><span>up to</span><h3>Cost reduction</h3><p>Cost structures rebuilt around products, activities, branches, and accountable owners.</p></article>
-          <article><strong>30%</strong><span>up to</span><h3>Waste reduction</h3><p>Purchasing, inventory, process, and cash leakage made visible and controlled.</p></article>
-          <article><strong>40%</strong><span>up to</span><h3>Productivity improvement</h3><p>Teams aligned to operating budgets, KPIs, and a repeatable decision rhythm.</p></article>
-          <article><strong>25%</strong><span>up to</span><h3>Margin improvement</h3><p>Pricing and product-mix decisions grounded in the true cost to serve.</p></article>
-        </div>
-        <p class="proof-note">Ranges are drawn from Growxcel's supplied company profile. Individual outcomes vary by engagement.</p>
-      </section>
+    <section class="solution-band" data-reveal aria-label="What Growxcel changes"><div data-item><b>01</b><strong>Costs</strong><span>Mapped and controlled</span></div><div data-item><b>02</b><strong>Reports</strong><span>Built to drive decisions</span></div><div data-item><b>03</b><strong>ERP</strong><span>Made useful for management</span></div><div data-item><b>04</b><strong>Teams</strong><span>Trained and accountable</span></div></section>
 
-      <!-- SYSTEM INTRO -->
-      <section id="system" class="system-intro section-reveal" data-theme="dark">
-        <div class="system-index">
-          <span>01</span>
-          <span>02</span>
-          <span>03</span>
-          <span>04</span>
-          <span>05</span>
-          <span>06</span>
-        </div>
-        <div class="system-statement">
-          <p>That's the</p>
-          <h2>Profit Operating System.</h2>
-          <strong>PROFIT OS™</strong>
-        </div>
-        <ul class="system-points">
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Built for owners who see revenue grow but profit stay flat</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Turns confusing accounting data into clear business decisions</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Connects costing, reporting, budgeting, and ERP — as one system</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Active across Egypt, Saudi Arabia, and the UAE — 7 Saudi cities, Dubai &amp; Ras Al Khaimah</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>We work at your premises — implementation happens inside your actual environment, not remotely</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Six service lines. One formula: reduce cost, increase visibility, drive profit</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Your accountant records history. We build systems that shape your future</li>
-          <li><svg class="li-check" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>The first and most specialized firm in Egypt and the Middle East for strategic cost management — founded 2017, 4× growth since</li>
-        </ul>
-      </section>
-
-      <!-- PLATFORM -->
-      <section id="platform" class="platform section-reveal">
-        <div class="section-copy">
-          <p class="eyebrow">Welcome to Growxcel</p>
-          <h2>Every number you've been guessing at — made visible.</h2>
-          <p>Most businesses are profitable on paper and confused in reality. Growxcel replaces guesswork with a model that maps every cost, fixes every pricing gap, and turns reports into actions.</p>
-        </div>
-        <div class="system-board">
-
-          <!-- 01 Cost Architecture: layered cost map -->
-          <article>
-            <span>01</span>
-            <div class="mini-visual mv-costmap" aria-hidden="true">
-              <div class="cm-row"><span class="cm-label">Products</span><div class="cm-bar" style="--w:85%"></div></div>
-              <div class="cm-row"><span class="cm-label">Branches</span><div class="cm-bar" style="--w:62%"></div></div>
-              <div class="cm-row"><span class="cm-label">Overhead</span><div class="cm-bar" style="--w:44%"></div></div>
-              <div class="cm-row cm-total"><span class="cm-label">Total</span><div class="cm-bar" style="--w:100%"></div></div>
-            </div>
-            <h3>Cost Architecture</h3>
-            <p>Map product, branch, department, and process costs into one usable model — so you know exactly where the money goes.</p>
-          </article>
-
-          <!-- 02 Pricing Logic: price vs cost gap -->
-          <article>
-            <span>02</span>
-            <div class="mini-visual mv-pricing" aria-hidden="true">
-              <div class="pr-stack">
-                <div class="pr-row pr-price"><span>Price</span></div>
-                <div class="pr-gap"><span>← margin gap →</span></div>
-                <div class="pr-row pr-cost"><span>Real cost</span></div>
-              </div>
-            </div>
-            <h3>Pricing Logic</h3>
-            <p>Most prices are set on gut feel or competition — not real cost. We connect contribution margin, operational waste, and market targets to protect your margin.</p>
-          </article>
-
-          <!-- 03 ERP Readiness: module checklist -->
-          <article>
-            <span>03</span>
-            <div class="mini-visual mv-erp" aria-hidden="true">
-              <div class="erp-row erp-ok"><span class="erp-dot"></span><span>Process map</span><span class="erp-status">Ready</span></div>
-              <div class="erp-row erp-ok"><span class="erp-dot"></span><span>Data setup</span><span class="erp-status">Ready</span></div>
-              <div class="erp-row erp-warn"><span class="erp-dot"></span><span>Team roles</span><span class="erp-status">Gap</span></div>
-              <div class="erp-row erp-ok"><span class="erp-dot"></span><span>System fit</span><span class="erp-status">Ready</span></div>
-            </div>
-            <h3>ERP Readiness</h3>
-            <p>Support SAP and Oracle implementations with process fit and clean data flow — so your ERP works for your business, not just the demo.</p>
-          </article>
-
-          <!-- 04 Executive Reporting: decision dashboard -->
-          <article>
-            <span>04</span>
-            <div class="mini-visual mv-dashboard" aria-hidden="true">
-              <div class="dash-row dash-up"><span class="dash-label">Revenue</span><b class="dash-val">+8.4%</b></div>
-              <div class="dash-row dash-down"><span class="dash-label">Margin</span><b class="dash-val">−2.1%</b></div>
-              <div class="dash-row dash-alert"><span class="dash-label">Action needed</span><b class="dash-val">Review costs</b></div>
-            </div>
-            <h3>Executive Reporting</h3>
-            <p>Financial data that tells you what happened is history. We build reporting packs that tell you what to do next — weekly, monthly, by branch.</p>
-          </article>
-
-        </div>
-        <p class="visual-disclaimer">Dashboard values are illustrative. See documented client outcomes in <a href="success-stories.html">Success Stories</a>.</p>
-        <div class="section-links" aria-label="Explore Growxcel expertise">
-          <a href="services.html">Explore all six services <span aria-hidden="true">→</span></a>
-          <a href="success-stories.html">See documented outcomes <span aria-hidden="true">→</span></a>
-        </div>
-      </section>
-
-      <!-- CLIENTS -->
-      <section id="clients" class="clients section-reveal" data-theme="dark">
-        <div class="cn-wrap">
-
-          <!-- Left: copy -->
-          <div class="cn-copy">
-            <p class="eyebrow">Client Network</p>
-            <h2>Trusted across F&amp;B, medical, industrial&nbsp;&amp; trading.</h2>
-            <p>60+ businesses where cost visibility directly affects margin — from restaurant groups to hospitals, industrial companies, and trading firms.</p>
-            <div class="cn-stats">
-              <div class="cn-stat"><strong>60+</strong><span>Clients served</span></div>
-              <div class="cn-stat"><strong>6</strong><span>Core sectors</span></div>
-              <div class="cn-stat"><strong>4×</strong><span>Business growth</span></div>
-            </div>
+    <section class="section section--soft" data-reveal>
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">The hidden cause</p><h2>Revenue enters. Margin leaks.</h2></div><p>The problem is rarely one large expense. It is dozens of small decisions nobody can see together.</p></div>
+        <div class="leak-flow">
+          <div class="flow-end" data-item><div><strong>100%</strong><span>Revenue enters</span></div></div>
+          <div class="leak-centers">
+            <div class="leak-center" style="--leak:68%" data-item><b>Purchasing</b><span>Price variance</span></div>
+            <div class="leak-center" style="--leak:52%" data-item><b>Stock</b><span>Waste &amp; shrinkage</span></div>
+            <div class="leak-center" style="--leak:74%" data-item><b>Branches</b><span>Unknown margins</span></div>
+            <div class="leak-center" style="--leak:45%" data-item><b>Pricing</b><span>Cost not included</span></div>
           </div>
-
-          <!-- Right: orbit -->
-          <div class="cn-orbit" aria-hidden="true">
-            <div class="cn-orbit-center"><img src="assets/growxcel-logo-white.png" alt="Growxcel" style="width:44px;height:44px;object-fit:contain;"></div>
-
-            <!-- Ring 1 — fast CW — 6 logos at 60° -->
-            <div class="cn-ring cn-ring-1">
-              <div class="cn-node-wrap" data-angle="0">  <div class="cn-node"><img src="assets/clients/13.jpeg" alt="BRGR"></div></div>
-              <div class="cn-node-wrap" data-angle="60"> <div class="cn-node"><img src="assets/clients/36.jpeg" alt="Cilantro"></div></div>
-              <div class="cn-node-wrap" data-angle="120"><div class="cn-node"><img src="assets/clients/16.jpeg" alt="Bon Appetit"></div></div>
-              <div class="cn-node-wrap" data-angle="180"><div class="cn-node"><img src="assets/clients/14.jpeg" alt="Monginis"></div></div>
-              <div class="cn-node-wrap" data-angle="240"><div class="cn-node"><img src="assets/clients/7.jpeg"  alt="Sesamo"></div></div>
-              <div class="cn-node-wrap" data-angle="300"><div class="cn-node"><img src="assets/clients/10.jpeg" alt="Tiffany"></div></div>
-            </div>
-
-            <!-- Ring 2 — medium CCW — 12 logos at 30° -->
-            <div class="cn-ring cn-ring-2">
-              <div class="cn-node-wrap" data-angle="0">  <div class="cn-node"><img src="assets/clients/25.jpeg" alt="Brisk Bites"></div></div>
-              <div class="cn-node-wrap" data-angle="30"> <div class="cn-node"><img src="assets/clients/26.jpeg" alt="Santos"></div></div>
-              <div class="cn-node-wrap" data-angle="60"> <div class="cn-node"><img src="assets/clients/23.jpeg" alt="El Lido"></div></div>
-              <div class="cn-node-wrap" data-angle="90"> <div class="cn-node"><img src="assets/clients/37.jpeg" alt="Kitch-N"></div></div>
-              <div class="cn-node-wrap" data-angle="120"><div class="cn-node"><img src="assets/clients/21.jpeg" alt="Cairo Kitchen"></div></div>
-              <div class="cn-node-wrap" data-angle="150"><div class="cn-node"><img src="assets/clients/9.jpeg"  alt="BeBe"></div></div>
-              <div class="cn-node-wrap" data-angle="180"><div class="cn-node"><img src="assets/clients/19.jpeg" alt="Greko"></div></div>
-              <div class="cn-node-wrap" data-angle="210"><div class="cn-node"><img src="assets/clients/4.jpeg"  alt="Alahli"></div></div>
-              <div class="cn-node-wrap" data-angle="240"><div class="cn-node"><img src="assets/clients/29.jpeg" alt="Green Meadows"></div></div>
-              <div class="cn-node-wrap" data-angle="270"><div class="cn-node"><img src="assets/clients/12.jpeg" alt="Dinner Time Stories"></div></div>
-              <div class="cn-node-wrap" data-angle="300"><div class="cn-node"><img src="assets/clients/33.jpeg" alt="El Forn"></div></div>
-              <div class="cn-node-wrap" data-angle="330"><div class="cn-node"><img src="assets/clients/17.jpeg" alt="B&C"></div></div>
-            </div>
-
-            <!-- Ring 3 — slow CW — 19 logos at ~19° -->
-            <div class="cn-ring cn-ring-3">
-              <div class="cn-node-wrap" data-angle="0">  <div class="cn-node"><img src="assets/clients/1.jpeg"  alt="Masah"></div></div>
-              <div class="cn-node-wrap" data-angle="19"> <div class="cn-node"><img src="assets/clients/2.jpeg"  alt="Southern Province Cement"></div></div>
-              <div class="cn-node-wrap" data-angle="38"> <div class="cn-node"><img src="assets/clients/3.jpeg"  alt="Teak"></div></div>
-              <div class="cn-node-wrap" data-angle="57"> <div class="cn-node"><img src="assets/clients/5.jpeg"  alt="Siham"></div></div>
-              <div class="cn-node-wrap" data-angle="76"> <div class="cn-node"><img src="assets/clients/6.jpeg"  alt="Client"></div></div>
-              <div class="cn-node-wrap" data-angle="95"> <div class="cn-node"><img src="assets/clients/8.jpeg"  alt="Luxurio"></div></div>
-              <div class="cn-node-wrap" data-angle="114"><div class="cn-node"><img src="assets/clients/11.jpeg" alt="Client"></div></div>
-              <div class="cn-node-wrap" data-angle="133"><div class="cn-node"><img src="assets/clients/15.jpeg" alt="Cuppermelt"></div></div>
-              <div class="cn-node-wrap" data-angle="152"><div class="cn-node"><img src="assets/clients/18.jpeg" alt="Zaher"></div></div>
-              <div class="cn-node-wrap" data-angle="171"><div class="cn-node"><img src="assets/clients/20.jpeg" alt="Al Malki"></div></div>
-              <div class="cn-node-wrap" data-angle="190"><div class="cn-node"><img src="assets/clients/22.jpeg" alt="Sincerely V"></div></div>
-              <div class="cn-node-wrap" data-angle="209"><div class="cn-node"><img src="assets/clients/24.jpeg" alt="Nile Dragon Boat"></div></div>
-              <div class="cn-node-wrap" data-angle="228"><div class="cn-node"><img src="assets/clients/27.jpeg" alt="Reyhana"></div></div>
-              <div class="cn-node-wrap" data-angle="247"><div class="cn-node"><img src="assets/clients/28.jpeg" alt="Honey Well"></div></div>
-              <div class="cn-node-wrap" data-angle="266"><div class="cn-node"><img src="assets/clients/30.jpeg" alt="Portobello"></div></div>
-              <div class="cn-node-wrap" data-angle="285"><div class="cn-node"><img src="assets/clients/31.jpeg" alt="Syne"></div></div>
-              <div class="cn-node-wrap" data-angle="304"><div class="cn-node"><img src="assets/clients/32.jpeg" alt="Butcher's Burger"></div></div>
-              <div class="cn-node-wrap" data-angle="323"><div class="cn-node"><img src="assets/clients/34.jpeg" alt="Spice Kingdom"></div></div>
-              <div class="cn-node-wrap" data-angle="342"><div class="cn-node"><img src="assets/clients/35.jpeg" alt="Bitter Sweet"></div></div>
-            </div>
-          </div>
-
+          <div class="flow-end flow-end--result" data-item><div><strong>?</strong><span>Profit remains</span></div></div>
         </div>
-      </section>
-
-      <!-- METHOD -->
-      <section id="method" class="method section-reveal">
-        <div class="section-copy narrow">
-          <p class="eyebrow">How we work</p>
-          <h2>A results-first process — not a consulting project that never ends.</h2>
-        </div>
-        <div class="timeline">
-
-          <!-- 01 Diagnose: scan findings visual -->
-          <article>
-            <b><svg class="step-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>01 — Diagnose</b>
-            <div class="step-visual sv-diagnose" aria-hidden="true">
-              <div class="diag-row"><span class="diag-label">Cost gaps</span><div class="diag-track"><div class="diag-fill" style="--w:82%"></div></div><span class="diag-tag">Found</span></div>
-              <div class="diag-row"><span class="diag-label">ERP fit</span><div class="diag-track"><div class="diag-fill" style="--w:60%"></div></div><span class="diag-tag">Found</span></div>
-              <div class="diag-row"><span class="diag-label">Report gaps</span><div class="diag-track"><div class="diag-fill" style="--w:74%"></div></div><span class="diag-tag">Found</span></div>
-            </div>
-            <p>We map your revenue, cost centers, stock flow, reporting gaps, ERP readiness, and team roles. You get a clear picture of where the money is actually going.</p>
-          </article>
-
-          <!-- 02 Design: system blueprint visual -->
-          <article>
-            <b><svg class="step-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>02 — Design</b>
-            <div class="step-visual sv-blueprint-new" aria-hidden="true">
-              <div class="bp-nodes">
-                <div class="bp-node">Costs</div>
-                <div class="bp-node">ERP</div>
-                <div class="bp-node">Budgets</div>
-              </div>
-              <div class="bp-lines">
-                <div class="bp-line"></div>
-                <div class="bp-line"></div>
-                <div class="bp-line"></div>
-              </div>
-              <div class="bp-hub">Formula</div>
-            </div>
-            <p>We design costing, pricing, budgets, controls, and reporting outputs — shaped around the decisions your business actually needs to make, not generic templates.</p>
-          </article>
-
-          <!-- 03 Deploy: progress checklist visual -->
-          <article>
-            <b><svg class="step-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>03 — Deploy</b>
-            <div class="step-visual sv-deploy-new" aria-hidden="true">
-              <div class="dep-row dep-done"><span class="dep-icon">✓</span><span>Process mapping</span><span class="dep-status">Done</span></div>
-              <div class="dep-row dep-done"><span class="dep-icon">✓</span><span>System setup</span><span class="dep-status">Done</span></div>
-              <div class="dep-row dep-active"><span class="dep-icon">◉</span><span>Team adoption</span><span class="dep-status">Live</span></div>
-            </div>
-            <p>Implementation, testing, workflow refinement, and team adoption across departments. We stay until the system works — not until the project ends.</p>
-          </article>
-
-          <!-- 04 Scale: regional growth visual -->
-          <article>
-            <b><svg class="step-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>04 — Scale</b>
-            <div class="step-visual sv-scale-new" aria-hidden="true">
-              <div class="scl-row"><span class="scl-label">Egypt</span><div class="scl-track"><div class="scl-fill" style="--w:100%"></div></div></div>
-              <div class="scl-row"><span class="scl-label">Saudi</span><div class="scl-track"><div class="scl-fill" style="--w:78%"></div></div></div>
-              <div class="scl-growth"><span class="scl-arrow">↑</span><span>Systems running independently</span></div>
-            </div>
-            <p>Training, governance, monthly review rhythm, and systems ready for regional growth. The formula runs without us — because we built it that way.</p>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="contact section-reveal" data-theme="dark">
-
-        <!-- Left: heading + contact details -->
-        <div class="contact-left">
-          <p class="eyebrow">Ready to close the gap?</p>
-          <h2>Let's show you exactly where your profit is going.</h2>
-          <p>Start with a cost audit. We'll map the gap between your revenue and your margin — and show you the formula to fix it. Serving businesses in Egypt, Saudi Arabia &amp; UAE, on-site at your premises.</p>
-
-          <div class="contact-info-block">
-            <div class="contact-info-row">
-              <span class="ci-label"><svg class="ci-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</span>
-              <a href="mailto:info@growxcel.com">info@growxcel.com</a>
-            </div>
-            <div class="contact-info-row">
-              <span class="ci-label"><svg class="ci-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.41 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Saudi</span>
-              <a href="tel:+966501240393" class="ct-phone">+966 501 240 393</a>
-            </div>
-            <div class="contact-info-row">
-              <span class="ci-label"><svg class="ci-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.41 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Egypt</span>
-              <a href="tel:+201027000696" class="ct-phone">+2 0102 7000 696</a>
-            </div>
-            <div class="contact-info-row">
-              <span class="ci-label"><svg class="ci-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Hours</span>
-              <span>Sun–Thu, 10:00–18:00</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: progressive contact form -->
-        <div class="contact-form-wrap">
-          <div class="pf-form" id="pf-form">
-
-            <!-- Progress -->
-            <div class="pf-header">
-              <div class="pf-progress"><div class="pf-progress-bar" id="pf-bar"></div></div>
-              <span class="pf-counter" id="pf-counter">Step 1 of 5</span>
-            </div>
-
-            <!-- Step 1 — Business type -->
-            <div class="pf-step active" data-step="1">
-              <p class="pf-label">Tell us about your business</p>
-              <h3 class="pf-question">What kind of business are you running?</h3>
-              <div class="pf-chips" data-field="business_type">
-                <button class="pf-chip" type="button" data-value="F&amp;B / Restaurant">F&amp;B / Restaurant</button>
-                <button class="pf-chip" type="button" data-value="Retail / Trading">Retail / Trading</button>
-                <button class="pf-chip" type="button" data-value="Industrial / Manufacturing">Industrial / Manufacturing</button>
-                <button class="pf-chip" type="button" data-value="Medical / Healthcare">Medical / Healthcare</button>
-                <button class="pf-chip" type="button" data-value="Services">Services</button>
-                <button class="pf-chip" type="button" data-value="Aviation">Aviation</button>
-                <button class="pf-chip" type="button" data-value="Other">Other</button>
-              </div>
-            </div>
-
-            <!-- Step 2 — Core problem -->
-            <div class="pf-step" data-step="2">
-              <p class="pf-label">Diagnose the issue</p>
-              <h3 class="pf-question">What's the biggest cost headache right now?</h3>
-              <p class="pf-hint">Pick the one that hurts most.</p>
-              <div class="pf-chips" data-field="main_problem">
-                <button class="pf-chip" type="button" data-value="Don't know real margins">We don't know our real margins</button>
-                <button class="pf-chip" type="button" data-value="Purchasing out of control">Purchasing is out of control</button>
-                <button class="pf-chip" type="button" data-value="ERP gives data, not answers">Our ERP gives data, not answers</button>
-                <button class="pf-chip" type="button" data-value="Reporting too slow">Reporting takes too long</button>
-                <button class="pf-chip" type="button" data-value="Scaling and things are breaking">We're scaling and things are breaking</button>
-              </div>
-            </div>
-
-            <!-- Step 3 — Scale -->
-            <div class="pf-step" data-step="3">
-              <p class="pf-label">Scope</p>
-              <h3 class="pf-question">How many locations or branches?</h3>
-              <p class="pf-hint">This helps us understand the complexity of your setup.</p>
-              <div class="pf-chips pf-chips--grid" data-field="locations">
-                <button class="pf-chip" type="button" data-value="1">1</button>
-                <button class="pf-chip" type="button" data-value="2–5">2–5</button>
-                <button class="pf-chip" type="button" data-value="6–15">6–15</button>
-                <button class="pf-chip" type="button" data-value="15+">15+</button>
-              </div>
-            </div>
-
-            <!-- Step 4 — Contact details -->
-            <div class="pf-step" data-step="4">
-              <p class="pf-label">Almost there</p>
-              <h3 class="pf-question">Where should we send your audit plan?</h3>
-              <p class="pf-hint">Your answers help us prepare a focused diagnostic rather than a generic brochure.</p>
-              <div class="pf-fields">
-                <div class="cf-field">
-                  <label for="pf-name">Your name</label>
-                  <input type="text" id="pf-name" name="name" placeholder="Full name" autocomplete="name" />
-                </div>
-                <div class="cf-field">
-                  <label for="pf-email">Email address</label>
-                  <input type="email" id="pf-email" name="email" placeholder="you@company.com" autocomplete="email" required />
-                </div>
-                <div class="cf-field">
-                  <label for="pf-phone">Phone (optional)</label>
-                  <input type="tel" id="pf-phone" name="phone" placeholder="+966 or +20…" autocomplete="tel" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 5 — Urgency -->
-            <div class="pf-step" data-step="5">
-              <p class="pf-label">One last thing</p>
-              <h3 class="pf-question">When do you need this resolved?</h3>
-              <p class="pf-hint">An honest answer helps us prioritise your call.</p>
-              <div class="pf-chips pf-chips--col" data-field="urgency">
-                <button class="pf-chip" type="button" data-value="Within a month">Within a month</button>
-                <button class="pf-chip" type="button" data-value="Next quarter">Next quarter</button>
-                <button class="pf-chip" type="button" data-value="Just exploring">Just exploring for now</button>
-              </div>
-            </div>
-
-            <!-- Nav -->
-            <div class="pf-nav">
-              <button class="pf-back hidden" id="pf-back" type="button">← Back</button>
-              <button class="pf-next" id="pf-next" type="button" disabled>Continue →</button>
-            </div>
-          </div>
-
-          <!-- Success -->
-          <div class="cf-success" id="cf-success" aria-live="polite">
-            <div class="cf-success-icon">✓</div>
-            <h3>Complete your request.</h3>
-            <p>Your email app should now be open with your answers prepared. Send that message to complete your request, or use WhatsApp below.</p>
-            <a href="https://wa.me/966501240393" class="pf-whatsapp" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Message us on WhatsApp
-            </a>
-          </div>
-        </div>
-
-      </section>
-
-    </main>
-
-    <footer>
-      <div class="footer-left">
-        <span class="footer-brand">GROWXCEL</span>
-        <span class="footer-sub"><svg class="footer-globe" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Grow and Excel Your Business</span>
       </div>
-      <span class="footer-copy">© 2026 Growxcel. All rights reserved. <a href="privacy.html">Privacy</a></span>
-    </footer>
+    </section>
 
-    <script src="assets/vendor/gsap.min.js"></script>
-    <script src="assets/vendor/ScrollTrigger.min.js"></script>
-    <script src="assets/vendor/lenis.min.js"></script>
-    <script src="script.js?v=methodology-1"></script>
-  </body>
+    <section class="section" id="system" data-reveal>
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">What Growxcel does</p><h2>We turn scattered numbers into one operating system.</h2></div><p>Not another report. A system your team uses to decide, act, and stay accountable.</p></div>
+        <div class="system-map">
+          <article class="system-node" data-item><span class="node-num">01</span><h3>Map costs</h3><p>See cost by product, branch, activity, and customer.</p></article>
+          <article class="system-node" data-item><span class="node-num">02</span><h3>Fix pricing</h3><p>Price using the real cost to serve and required margin.</p></article>
+          <article class="system-node" data-item><span class="node-num">03</span><h3>Connect ERP</h3><p>Turn SAP, Oracle, Odoo, or Dynamics data into decisions.</p></article>
+          <article class="system-node" data-item><span class="node-num">04</span><h3>Assign action</h3><p>Give every KPI an owner, target, and review rhythm.</p></article>
+        </div>
+        <div class="system-output" data-item><strong>One result: management can see where profit goes and what to do next.</strong></div>
+      </div>
+    </section>
+
+    <section class="section section--soft" data-reveal>
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">The transformation</p><h2>From guessing to control.</h2></div><p>The value is not more data. It is knowing which action protects margin today.</p></div>
+        <div class="ba-grid">
+          <article class="ba-panel" data-item><span class="ba-tag">Before Growxcel</span><h3>Revenue is visible. Profit is confusing.</h3><ul class="ba-list"><li><b>Branch margin</b><i></i></li><li><b>Product cost</b><i></i></li><li><b>Reports</b><span>Late</span></li><li><b>Accountability</b><span>Unclear</span></li></ul></article>
+          <article class="ba-panel" data-item><span class="ba-tag">After Growxcel</span><h3>Every number leads to a decision.</h3><ul class="ba-list"><li><b>Branch margin</b><i></i></li><li><b>Product cost</b><i></i></li><li><b>Reports</b><span>Action-ready</span></li><li><b>Accountability</b><span>Assigned</span></li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">Documented outcome range</p><h2>Four numbers move when the system works.</h2></div><p>Ranges supplied in Growxcel's company profile. Results vary by engagement.</p></div>
+        <div class="metric-grid"><article class="metric" data-item><strong>40%</strong><h3>Cost reduction</h3><p>Up to, through visibility and control.</p></article><article class="metric" data-item><strong>30%</strong><h3>Waste reduction</h3><p>Up to, across stock and process.</p></article><article class="metric" data-item><strong>40%</strong><h3>Productivity</h3><p>Up to, through ownership and rhythm.</p></article><article class="metric" data-item><strong>25%</strong><h3>Margin improvement</h3><p>Up to, through cost-led decisions.</p></article></div>
+      </div>
+    </section>
+
+    <section class="section section--soft" data-reveal>
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">Proof</p><h2>Businesses like yours have already changed the numbers.</h2></div><p>Verified outcomes from supplied Growxcel case studies.</p></div>
+        <div class="proof-grid">
+          <article class="proof-card" data-item><span class="proof-sector">Medical</span><strong class="proof-number">+55%</strong><h3>Revenue growth</h3><p>Service costing, pricing correction, and SAP integration.</p><a href="success-stories.html">See the evidence →</a></article>
+          <article class="proof-card" data-item><span class="proof-sector">Cash logistics</span><strong class="proof-number">-27%</strong><h3>Logistics cost</h3><p>Route economics, workforce controls, and lower cash loss.</p><a href="success-stories.html">See the evidence →</a></article>
+          <article class="proof-card" data-item><span class="proof-sector">Retail</span><strong class="proof-number">10→17%</strong><h3>Profitability</h3><p>Branch economics connected to Dynamics 365 and POS.</p><a href="success-stories.html">See the evidence →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="client-network" data-reveal aria-labelledby="client-network-title">
+      <div class="client-network-inner">
+        <div class="client-network-copy" data-item><p class="eyebrow">Client network</p><h2 id="client-network-title">Trusted across F&amp;B, medical, industrial &amp; trading.</h2><p>60+ businesses where cost visibility directly affects margin, from restaurant groups to hospitals, industrial companies, and trading firms.</p><div class="client-network-stats"><div><strong>60+</strong><span>Clients served</span></div><div><strong>6</strong><span>Core sectors</span></div><div><strong>4×</strong><span>Business growth</span></div></div></div>
+        <div class="client-orbit" data-item aria-label="Growxcel client logo network">
+          <div class="orbit-center"><img src="assets/growxcel-logo-white.png" alt="Growxcel"></div>
+          <div class="orbit-line orbit-line--1"></div><div class="orbit-line orbit-line--2"></div><div class="orbit-line orbit-line--3"></div>
+          <div class="orbit-group orbit-group--1">
+            <span class="orbit-node" data-angle="0"><i><img src="assets/clients/13.jpeg" alt="BRGR"></i></span><span class="orbit-node" data-angle="60"><i><img src="assets/clients/36.jpeg" alt="Cilantro"></i></span><span class="orbit-node" data-angle="120"><i><img src="assets/clients/16.jpeg" alt="Bon Appetit"></i></span><span class="orbit-node" data-angle="180"><i><img src="assets/clients/14.jpeg" alt="Monginis"></i></span><span class="orbit-node" data-angle="240"><i><img src="assets/clients/7.jpeg" alt="Sesamo"></i></span><span class="orbit-node" data-angle="300"><i><img src="assets/clients/10.jpeg" alt="Tiffany"></i></span>
+          </div>
+          <div class="orbit-group orbit-group--2">
+            <span class="orbit-node" data-angle="0"><i><img src="assets/clients/25.jpeg" alt="Brisk Bites"></i></span><span class="orbit-node" data-angle="30"><i><img src="assets/clients/26.jpeg" alt="Santos"></i></span><span class="orbit-node" data-angle="60"><i><img src="assets/clients/23.jpeg" alt="El Lido"></i></span><span class="orbit-node" data-angle="90"><i><img src="assets/clients/37.jpeg" alt="Kitch-N"></i></span><span class="orbit-node" data-angle="120"><i><img src="assets/clients/21.jpeg" alt="Cairo Kitchen"></i></span><span class="orbit-node" data-angle="150"><i><img src="assets/clients/9.jpeg" alt="BeBe"></i></span><span class="orbit-node" data-angle="180"><i><img src="assets/clients/19.jpeg" alt="Greko"></i></span><span class="orbit-node" data-angle="210"><i><img src="assets/clients/4.jpeg" alt="Alahli"></i></span><span class="orbit-node" data-angle="240"><i><img src="assets/clients/29.jpeg" alt="Green Meadows"></i></span><span class="orbit-node" data-angle="270"><i><img src="assets/clients/12.jpeg" alt="Dinner Time Stories"></i></span><span class="orbit-node" data-angle="300"><i><img src="assets/clients/33.jpeg" alt="El Forn"></i></span><span class="orbit-node" data-angle="330"><i><img src="assets/clients/17.jpeg" alt="B&amp;C"></i></span>
+          </div>
+          <div class="orbit-group orbit-group--3">
+            <span class="orbit-node" data-angle="0"><i><img src="assets/clients/1.jpeg" alt="Masah"></i></span><span class="orbit-node" data-angle="19"><i><img src="assets/clients/2.jpeg" alt="Southern Province Cement"></i></span><span class="orbit-node" data-angle="38"><i><img src="assets/clients/3.jpeg" alt="Teak"></i></span><span class="orbit-node" data-angle="57"><i><img src="assets/clients/5.jpeg" alt="Siham"></i></span><span class="orbit-node" data-angle="76"><i><img src="assets/clients/6.jpeg" alt="Growxcel client"></i></span><span class="orbit-node" data-angle="95"><i><img src="assets/clients/8.jpeg" alt="Luxurio"></i></span><span class="orbit-node" data-angle="114"><i><img src="assets/clients/11.jpeg" alt="Growxcel client"></i></span><span class="orbit-node" data-angle="133"><i><img src="assets/clients/15.jpeg" alt="Cuppermelt"></i></span><span class="orbit-node" data-angle="152"><i><img src="assets/clients/18.jpeg" alt="Zaher"></i></span><span class="orbit-node" data-angle="171"><i><img src="assets/clients/20.jpeg" alt="Al Malki"></i></span><span class="orbit-node" data-angle="190"><i><img src="assets/clients/22.jpeg" alt="Sincerely V"></i></span><span class="orbit-node" data-angle="209"><i><img src="assets/clients/24.jpeg" alt="Nile Dragon Boat"></i></span><span class="orbit-node" data-angle="228"><i><img src="assets/clients/27.jpeg" alt="Reyhana"></i></span><span class="orbit-node" data-angle="247"><i><img src="assets/clients/28.jpeg" alt="Honeywell"></i></span><span class="orbit-node" data-angle="266"><i><img src="assets/clients/30.jpeg" alt="Portobello"></i></span><span class="orbit-node" data-angle="285"><i><img src="assets/clients/31.jpeg" alt="Syne"></i></span><span class="orbit-node" data-angle="304"><i><img src="assets/clients/32.jpeg" alt="Butcher's Burger"></i></span><span class="orbit-node" data-angle="323"><i><img src="assets/clients/34.jpeg" alt="Spice Kingdom"></i></span><span class="orbit-node" data-angle="342"><i><img src="assets/clients/35.jpeg" alt="Bitter Sweet"></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy decision-close" data-reveal>
+      <div class="container" data-item><p class="eyebrow">Your next decision</p><h2>Find where your profit is going.</h2><p class="lead">Start with a focused consultation. Leave with a clear map of the problem and the first actions to fix it.</p><div class="button-row"><a class="button button--yellow" href="contact.html">Book a Consultation <span class="button-arrow">→</span></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img src="assets/growxcel-logo-white.png" alt=""><span>GROWXCEL</span></a><p>Profit visibility, cost control, and operating systems your team can own.</p></div><div class="footer-col"><strong>Explore</strong><a href="services.html">Services</a><a href="success-stories.html">Success Stories</a><a href="about.html">About</a></div><div class="footer-col"><strong>Saudi Arabia</strong><span>Olaya Towers, Tower B</span><span>29th Floor, Riyadh</span><a href="tel:+966501240393">+966 50 124 0393</a></div><div class="footer-col"><strong>Egypt</strong><span>20 Mossadeq St., Dokki</span><a href="mailto:info@growxcel.com">info@growxcel.com</a><a href="contact.html">Contact Growxcel</a></div></div><div class="footer-bottom"><span>© 2026 Growxcel</span><span><a href="privacy.html">Privacy</a></span></div></div></footer>
+  <script src="assets/vendor/gsap.min.js"></script><script src="assets/vendor/ScrollTrigger.min.js"></script><script src="assets/vendor/lenis.min.js"></script><script src="assets/clean.js?v=3"></script>
+</body>
 </html>

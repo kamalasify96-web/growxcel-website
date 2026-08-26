@@ -15,16 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!--
-      3-tier font hierarchy:
-      EN display:  Bricolage Grotesque — hero headlines (editorial punch)
-      EN heading:  Space Grotesk      — section h2/h3 (enterprise SaaS, structured)
-      EN body:     IBM Plex Sans      — body/labels/data (finance-grade trustworthiness)
-      AR display:  Cairo              — Arabic hero/headlines (geometric, heavy, modern)
-      AR body:     IBM Plex Arabic    — Arabic body text (matches IBM Plex Sans exactly)
+      Font hierarchy:
+      EN heading: Space Grotesk     — h1-h4, hero title (structured, technical, fintech-grade)
+      EN body:    Inter             — body/labels/data (best-in-class SaaS legibility, strong numerals)
+      AR heading: Noto Kufi Arabic  — Arabic h1-h4, hero title (blocky, geometric, modern)
+      AR body:    Almarai           — Arabic body text (modern, clean, correct letter joining)
     -->
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=methodology-2" />
-    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=methodology-33" />
+    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-4" />
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"Organization","name":"Growxcel","url":"https://growxcel.com/","logo":"https://growxcel.com/assets/growxcel-logo-white.png","email":"info@growxcel.com","founder":{"@type":"Person","name":"Dr. Rabab Mostafa"},"areaServed":["Egypt","Saudi Arabia","United Arab Emirates"]}
     </script>
@@ -61,8 +60,8 @@
         <button class="ham-btn" id="ham-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
           <span></span><span></span><span></span>
         </button>
-        <span class="lang-toggle lang-disabled" aria-disabled="true" title="Arabic version follows English approval">AR</span>
-        <a class="header-cta" href="#contact">Book Audit</a>
+        <a class="lang-toggle" href="ar/index.html" title="النسخة العربية">AR</a>
+        <a class="header-cta" href="#contact">Book a Consultation</a>
       </div>
     </header>
     <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
@@ -72,8 +71,8 @@
       <a href="about.html">About</a>
       <a href="saudi-arabia.html">Saudi Arabia</a>
       <a href="contact.html">Contact</a>
-      <span class="mobile-lang-disabled" aria-disabled="true">AR — عربي · Coming after English approval</span>
-      <a href="#contact" class="mob-cta">Book a Free Audit</a>
+      <a href="ar/index.html" class="mobile-lang-disabled">AR — عربي</a>
+      <a href="#contact" class="mob-cta">Book a Free Consultation</a>
     </div>
 
     <main id="top">
@@ -117,7 +116,7 @@
               <span>System Active</span>
             </span>
             <span class="hcb-div" aria-hidden="true"></span>
-            <span class="hcb-item">Egypt · Saudi Arabia · UAE</span>
+            <span class="hcb-item">Egypt &amp; Saudi Arabia · Serving the Middle East</span>
             <span class="hcb-div" aria-hidden="true"></span>
             <span class="hcb-item">60+ Clients Served</span>
             <span class="hcb-div" aria-hidden="true"></span>
@@ -147,7 +146,7 @@
               <!-- Trust proof line — skill: Trust & Authority, credentials/metrics prominent -->
               <div class="hero-trust-row">
                 <svg class="hero-trust-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <span>Trusted by 60+ businesses across F&amp;B, industrial, medical &amp; trading</span>
+                <span>Trusted by 60+ businesses across F&amp;B, aviation, medical, industrial, commercial &amp; service sectors</span>
               </div>
             </div>
           </div>
@@ -193,7 +192,7 @@
                   <div>
                     <span class="pml">Formula layer 02</span>
                     <span class="pmv">Use ERP</span>
-                    <span class="pms">SAP & Oracle data made practical</span>
+                    <span class="pms">SAP, Oracle, Odoo & Microsoft data made practical</span>
                   </div>
                   <div class="pm-bar"><div class="pm-fill" style="width:88%"></div></div>
                 </div>
@@ -316,7 +315,7 @@
           <article><strong>40%</strong><span>up to</span><h3>Cost reduction</h3><p>Cost structures rebuilt around products, activities, branches, and accountable owners.</p></article>
           <article><strong>30%</strong><span>up to</span><h3>Waste reduction</h3><p>Purchasing, inventory, process, and cash leakage made visible and controlled.</p></article>
           <article><strong>40%</strong><span>up to</span><h3>Productivity improvement</h3><p>Teams aligned to operating budgets, KPIs, and a repeatable decision rhythm.</p></article>
-          <article><strong>25%</strong><span>up to</span><h3>Margin improvement</h3><p>Pricing and product-mix decisions grounded in the true cost to serve.</p></article>
+          <article><strong>25%</strong><span>up to</span><h3>Margin improvement</h3><p>Pricing or product-mix decisions grounded in the true cost to serve.</p></article>
         </div>
         <p class="proof-note">Ranges are drawn from Growxcel's supplied company profile. Individual outcomes vary by engagement.</p>
       </section>
@@ -394,7 +393,7 @@
               <div class="erp-row erp-ok"><span class="erp-dot"></span><span>System fit</span><span class="erp-status">Ready</span></div>
             </div>
             <h3>ERP Readiness</h3>
-            <p>Support SAP and Oracle implementations with process fit and clean data flow — so your ERP works for your business, not just the demo.</p>
+            <p>Support SAP, Oracle, Odoo, and Microsoft implementations with process fit and clean data flow — so your ERP works for your business, not just the demo.</p>
           </article>
 
           <!-- 04 Executive Reporting: decision dashboard -->
@@ -424,8 +423,8 @@
           <!-- Left: copy -->
           <div class="cn-copy">
             <p class="eyebrow">Client Network</p>
-            <h2>Trusted across F&amp;B, medical, industrial&nbsp;&amp; trading.</h2>
-            <p>60+ businesses where cost visibility directly affects margin — from restaurant groups to hospitals, industrial companies, and trading firms.</p>
+            <h2>Trusted across F&amp;B, aviation, medical, industrial, commercial&nbsp;&amp; service sectors.</h2>
+            <p>60+ businesses where cost visibility directly affects margin. Branches in Egypt and Saudi Arabia, projects delivered across Egypt, Saudi Arabia and the UAE, and services provided across the Middle East region.</p>
             <div class="cn-stats">
               <div class="cn-stat"><strong>60+</strong><span>Clients served</span></div>
               <div class="cn-stat"><strong>6</strong><span>Core sectors</span></div>
@@ -484,6 +483,65 @@
               <div class="cn-node-wrap" data-angle="304"><div class="cn-node"><img src="assets/clients/32.jpeg" alt="Butcher's Burger"></div></div>
               <div class="cn-node-wrap" data-angle="323"><div class="cn-node"><img src="assets/clients/34.jpeg" alt="Spice Kingdom"></div></div>
               <div class="cn-node-wrap" data-angle="342"><div class="cn-node"><img src="assets/clients/35.jpeg" alt="Bitter Sweet"></div></div>
+            </div>
+          </div>
+
+          <div class="cn-logo-marquee" aria-label="All Growxcel clients">
+            <div class="cn-logo-track">
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/aviation-egyptair.webp" alt="EgyptAir"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/commercial-meyag.webp" alt="Meyag"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/commercial-trindiva.webp" alt="Trindiva"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-aei.webp" alt="AEI"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-client.webp" alt="Growxcel client"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-el-serougy.webp" alt="El Serougy"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-elbal.webp" alt="Elbal"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-general-force.webp" alt="General Force"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-habitat.webp" alt="Habitat"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-meyag.webp" alt="Meyag"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-tai.webp" alt="TAI"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-tepco.webp" alt="Tepco"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/industrial-vogue.webp" alt="Vogue"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/medical-acculab.webp" alt="Acculab"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/medical-dar-al-fouad.webp" alt="Dar Al Fouad"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/medical-kasr-alainy.webp" alt="Kasr Alainy"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/medical-provider.webp" alt="Growxcel client"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-association.webp" alt="Association"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-dahab.webp" alt="Dahab"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-gasreg.webp" alt="Gasreg"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-grant-thornton.webp" alt="Grant Thornton"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-meyag.webp" alt="Meyag"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-nfsa.webp" alt="NFSA"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-sidra.webp" alt="Sidra"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-speed-service.webp" alt="Speed Service"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-trindiva.webp" alt="Trindiva"></div>
+              <div class="cn-logo-chip"><img src="assets/clients-expanded/services-yello.webp" alt="Yello"></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/aviation-egyptair.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/commercial-meyag.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/commercial-trindiva.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-aei.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-client.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-el-serougy.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-elbal.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-general-force.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-habitat.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-meyag.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-tai.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-tepco.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/industrial-vogue.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/medical-acculab.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/medical-dar-al-fouad.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/medical-kasr-alainy.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/medical-provider.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-association.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-dahab.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-gasreg.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-grant-thornton.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-meyag.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-nfsa.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-sidra.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-speed-service.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-trindiva.webp" alt=""></div>
+              <div class="cn-logo-chip" aria-hidden="true"><img src="assets/clients-expanded/services-yello.webp" alt=""></div>
             </div>
           </div>
 
@@ -560,7 +618,7 @@
         <div class="contact-left">
           <p class="eyebrow">Ready to close the gap?</p>
           <h2>Let's show you exactly where your profit is going.</h2>
-          <p>Start with a cost audit. We'll map the gap between your revenue and your margin — and show you the formula to fix it. Serving businesses in Egypt, Saudi Arabia &amp; UAE, on-site at your premises.</p>
+          <p>Start with a consultation. We'll map the gap between your revenue and your margin — and show you the formula to fix it. Serving businesses in Egypt, Saudi Arabia &amp; UAE, on-site at your premises.</p>
 
           <div class="contact-info-block">
             <div class="contact-info-row">
@@ -637,7 +695,7 @@
             <!-- Step 4 — Contact details -->
             <div class="pf-step" data-step="4">
               <p class="pf-label">Almost there</p>
-              <h3 class="pf-question">Where should we send your audit plan?</h3>
+              <h3 class="pf-question">Where should we send your consultation plan?</h3>
               <p class="pf-hint">Your answers help us prepare a focused diagnostic rather than a generic brochure.</p>
               <div class="pf-fields">
                 <div class="cf-field">
@@ -698,9 +756,16 @@
       <span class="footer-copy">© 2026 Growxcel. All rights reserved. <a href="privacy.html">Privacy</a></span>
     </footer>
 
+    <div class="footer-powered">
+      <span>Powered by</span>
+      <a href="https://www.wavzstudio.com" target="_blank" rel="noopener noreferrer" aria-label="Wavz Studio">
+        <img src="assets/wavzstudio-logo.png" alt="Wavz Studio">
+      </a>
+    </div>
+
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/vendor/lenis.min.js"></script>
-    <script src="script.js?v=methodology-1"></script>
+    <script src="script.js?v=methodology-3"></script>
   </body>
 </html>

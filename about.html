@@ -14,9 +14,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=methodology-2" />
-    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-2" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=methodology-33" />
+    <link rel="stylesheet" href="assets/light-theme-overrides.css?v=compare-light-4" />
   </head>
   <body>
     <img id="hlb-ring-1" src="assets/growxcel-logo-white.png" alt="" aria-hidden="true" />
@@ -42,8 +42,8 @@
         <button class="ham-btn" id="ham-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
           <span></span><span></span><span></span>
         </button>
-        <span class="lang-toggle lang-disabled" aria-disabled="true" title="Arabic version follows English approval">AR</span>
-        <a class="header-cta" href="contact.html">Book Audit</a>
+        <a class="lang-toggle" href="ar/about.html" title="النسخة العربية">AR</a>
+        <a class="header-cta" href="contact.html">Book a Consultation</a>
       </div>
     </header>
     <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
@@ -53,17 +53,26 @@
       <a href="about.html" class="active">About</a>
       <a href="saudi-arabia.html">Saudi Arabia</a>
       <a href="contact.html">Contact</a>
-      <span class="mobile-lang-disabled" aria-disabled="true">AR — عربي · Coming after English approval</span>
-      <a href="contact.html" class="mob-cta">Book a Free Audit</a>
+      <a href="ar/about.html" class="mobile-lang-disabled">AR — عربي</a>
+      <a href="contact.html" class="mob-cta">Book a Free Consultation</a>
     </div>
 
     <main id="main">
 
       <!-- PAGE HEADER -->
       <section class="page-header section-reveal">
-        <p class="eyebrow">First &amp; most specialized in Egypt &amp; the Middle East</p>
-        <h1>The firm behind<br>the formula.</h1>
-        <p class="hero-text">Growxcel was founded on a single conviction: cost management should be a strategic tool for growth, not a compliance exercise. Since 2017, we've built that conviction into practical systems for 60+ businesses across Egypt, Saudi Arabia, and the UAE.</p>
+        <div class="page-header-copy">
+          <p class="eyebrow">First &amp; most specialized in Egypt &amp; the Middle East</p>
+          <h1>The firm behind<br>the formula.</h1>
+          <p class="hero-text">Growxcel was founded on a single conviction: cost management should be a strategic tool for growth, not a compliance exercise. Since 2017, we've built that conviction into practical systems for 60+ businesses across Egypt, Saudi Arabia, and the UAE.</p>
+        </div>
+        <div class="page-header-image">
+          <picture>
+            <source srcset="assets/cs/about-cover.avif" type="image/avif" />
+            <source srcset="assets/cs/about-cover.webp" type="image/webp" />
+            <img src="assets/cs/about-cover.webp" alt="Growxcel consulting team reviewing cost strategy" loading="eager" decoding="async" width="960" height="1280" />
+          </picture>
+        </div>
       </section>
 
       <!-- VISION & MISSION -->
@@ -94,7 +103,7 @@
           </a>
           <div class="credibility-strip" aria-label="Growxcel credentials">
             <span>Founder-led expertise</span>
-            <span>Egypt · Saudi Arabia · UAE</span>
+            <span>Egypt &amp; Saudi Arabia · Serving the Middle East</span>
             <span>ERP integration</span>
             <span>Est. 2017</span>
           </div>
@@ -188,7 +197,7 @@
           </article>
           <article>
             <b>ERP</b>
-            <h3>SAP · Oracle · Odoo · Dynamics</h3>
+            <h3>SAP · Oracle · Odoo · Microsoft</h3>
             <p>Hands-on implementation experience across the major ERP platforms in use across Egypt, Saudi Arabia, and the UAE business environments.</p>
           </article>
         </div>
@@ -354,7 +363,7 @@
             </div>
             <div class="pf-step" data-step="4">
               <p class="pf-label">Almost there</p>
-              <h3 class="pf-question">Where should we send your audit plan?</h3>
+              <h3 class="pf-question">Where should we send your consultation plan?</h3>
               <p class="pf-hint">Your answers help us prepare a focused diagnostic rather than a generic brochure.</p>
               <div class="pf-fields">
                 <div class="cf-field">
@@ -408,9 +417,16 @@
       <span class="footer-copy">© 2026 Growxcel. All rights reserved. <a href="privacy.html">Privacy</a></span>
     </footer>
 
+    <div class="footer-powered">
+      <span>Powered by</span>
+      <a href="https://www.wavzstudio.com" target="_blank" rel="noopener noreferrer" aria-label="Wavz Studio">
+        <img src="assets/wavzstudio-logo.png" alt="Wavz Studio">
+      </a>
+    </div>
+
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/vendor/lenis.min.js"></script>
-    <script src="script.js?v=methodology-1"></script>
+    <script src="script.js?v=methodology-3"></script>
   </body>
 </html>

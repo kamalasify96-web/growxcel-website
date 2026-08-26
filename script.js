@@ -336,6 +336,11 @@ function initContactForm() {
   let   goingBack = false;
   const answers = {};
 
+  const isAr = document.documentElement.lang === "ar";
+  const t = isAr
+    ? { step: (n, tot) => "الخطوة " + n + " من " + tot, send: "إرسال الطلب ←", continue: "متابعة ←", sending: "جارٍ الإرسال…" }
+    : { step: (n, tot) => "Step " + n + " of " + tot, send: "Send Request →", continue: "Continue →", sending: "Sending…" };
+
   function refreshUI() {
     steps.forEach((s, i) => {
       const isActive = i === current;
@@ -344,9 +349,9 @@ function initContactForm() {
     });
 
     bar.style.width = ((current + 1) / total * 100) + "%";
-    counter.textContent = "Step " + (current + 1) + " of " + total;
+    counter.textContent = t.step(current + 1, total);
     backBtn.classList.toggle("hidden", current === 0);
-    nextBtn.textContent = current === total - 1 ? "Send Request →" : "Continue →";
+    nextBtn.textContent = current === total - 1 ? t.send : t.continue;
     checkNextState();
 
     /* Auto-focus first input on text-field steps */
@@ -410,7 +415,7 @@ function initContactForm() {
 
   function submit() {
     nextBtn.disabled = true;
-    nextBtn.textContent = "Sending…";
+    nextBtn.textContent = t.sending;
 
     const name  = answers.name  || "";
     const mail  = answers.email || "";
@@ -427,7 +432,7 @@ function initContactForm() {
     ].filter(Boolean).join("\n");
 
     const mailtoLink = `mailto:info@growxcel.com`
-      + `?subject=${encodeURIComponent("[Growxcel] Audit request from " + name)}`
+      + `?subject=${encodeURIComponent("[Growxcel] Consultation request from " + name)}`
       + `&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailtoLink;
@@ -440,7 +445,9 @@ function initContactForm() {
 
   const privacyNote = document.createElement("p");
   privacyNote.className = "pf-privacy";
-  privacyNote.innerHTML = 'By continuing, you agree that Growxcel may use these details to respond to your request. <a href="privacy.html">Privacy notice</a>.';
+  privacyNote.innerHTML = isAr
+    ? 'بمتابعتك، فإنك توافق على أن تستخدم Growxcel هذه البيانات للرد على طلبك. <a href="privacy.html">إشعار الخصوصية</a>.'
+    : 'By continuing, you agree that Growxcel may use these details to respond to your request. <a href="privacy.html">Privacy notice</a>.';
   pfForm.appendChild(privacyNote);
 
   refreshUI();
@@ -659,9 +666,18 @@ function initCsCarousel() {
   let current = 0;
   const total = slides.length;
 
+  // RTL flex-reverses the slide row, so each slide sits one track-width
+  // further to the LEFT of the visible window as its index increases.
+  // translateX(-current*100%) (correct for LTR) shifts the same way,
+  // moving further from the next slide instead of toward it — landing
+  // on the empty gap between slides. Flip the sign under RTL so the
+  // track shifts right, toward the next slide.
+  const isRtl = document.documentElement.dir === "rtl";
+  const sign  = isRtl ? 1 : -1;
+
   function goTo(index) {
     current = Math.max(0, Math.min(index, total - 1));
-    track.style.transform = `translateX(-${current * 100}%)`;
+    track.style.transform = `translateX(${sign * current * 100}%)`;
     dots.forEach((d, i) => {
       d.classList.toggle("active", i === current);
       d.setAttribute("aria-selected", i === current ? "true" : "false");
@@ -677,7 +693,7 @@ function initCsCarousel() {
   let startX = 0;
   track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener("touchend", e => {
-    const diff = startX - e.changedTouches[0].clientX;
+    const diff = (startX - e.changedTouches[0].clientX) * (isRtl ? -1 : 1);
     if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
   });
 
