@@ -422,6 +422,8 @@ footer{ background: var(--brand); }
   grid-template-columns: minmax(0,1.05fr) minmax(280px,420px);
   gap: clamp(32px,5vw,72px);
   align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .page-header-image{
   border-radius: 16px;
