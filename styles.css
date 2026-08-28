@@ -5628,14 +5628,14 @@ nav a {
 }
 
 .hfb-1 {
-  top: -14px;
-  left: -22px;
+  top: -64px;
+  left: -10px;
   animation: badge-float-a 4.5s ease-in-out infinite;
 }
 
 .hfb-2 {
-  bottom: 36px;
-  right: -22px;
+  bottom: -64px;
+  right: -10px;
   animation: badge-float-b 4.5s ease-in-out infinite;
 }
 
@@ -6123,21 +6123,6 @@ html[lang="ar"][dir="rtl"] .hero-line-pre .hero-word {
 html[lang="ar"][dir="rtl"] .hero-line {
   margin-block: 0.06em;
   padding-bottom: 0.18em;
-}
-
-/* ── Arabic RTL: floating metric badges clear of card text ───────────
-   .hfb-1/.hfb-2 float partly inside the product-shell card by design.
-   In RTL the card's internal text (topbar tag, row headings) mirrors
-   to the opposite side and lands directly under the badges. Push both
-   badges fully outside the card instead of partially over it so they
-   never sit on top of text. ─────────────────────────────────────────── */
-html[lang="ar"][dir="rtl"] .hfb-1 {
-  top: -64px !important;
-  left: -10px !important;
-}
-html[lang="ar"][dir="rtl"] .hfb-2 {
-  bottom: -64px !important;
-  right: -10px !important;
 }
 
 /* ── Arabic RTL: heading line-height, site-wide ───────────────────────
