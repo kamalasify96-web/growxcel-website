@@ -5204,6 +5204,11 @@ nav a {
   font-weight: 500;
 }
 
+[dir="rtl"] .compare-table th.ct-feature-col,
+[dir="rtl"] .compare-table td:first-child {
+  text-align: right;
+}
+
 /* Skill: checkmarks green, X red, partial muted */
 .ct-yes {
   display: inline-flex;
@@ -5294,6 +5299,10 @@ nav a {
     margin-bottom: 10px;
     border-bottom: 1px solid var(--border-dark);
     line-height: 1.4;
+  }
+
+  [dir="rtl"] .compare-table tbody td:first-child {
+    text-align: right;
   }
 
   /* Icon cells — bottom row, 3 equal columns */
