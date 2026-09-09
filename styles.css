@@ -1750,6 +1750,51 @@ h3 {
   font-size: 0.94rem;
 }
 
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.founder-links .linkedin-button,
+.founder-links .linktree-button {
+  margin-top: 22px;
+}
+
+.linktree-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 18px 0 12px;
+  border: 1px solid rgba(8, 47, 115, 0.16);
+  border-radius: 999px;
+  color: var(--brand);
+  background: var(--white);
+  box-shadow: 0 16px 48px rgba(8, 47, 115, 0.08);
+  font-size: 0.88rem;
+  font-weight: 900;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.linktree-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(91, 155, 255, 0.48);
+  box-shadow: 0 22px 58px rgba(8, 47, 115, 0.14);
+}
+
+.linktree-button span {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #43e660;
+  color: #0a2e0f;
+}
+
+.linktree-button span svg { width: 15px; height: 15px; }
+
 .credibility-strip {
   display: flex;
   flex-wrap: wrap;
